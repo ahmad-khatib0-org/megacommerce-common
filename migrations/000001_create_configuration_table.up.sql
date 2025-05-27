@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS configurations(
+  id VARCHAR(26) PRIMARY KEY,
+  value BYTEA NOT NULL,
+  created_at BIGINT NOT NULL,
+  active BOOLEAN DEFAULT NULL UNIQUE
+)
