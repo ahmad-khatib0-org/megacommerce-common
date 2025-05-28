@@ -4,3 +4,4 @@ protobuf
 psycopg2-binary
 pyyaml
 protobuf
+grpcio-reflection
