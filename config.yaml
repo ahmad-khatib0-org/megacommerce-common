@@ -1,0 +1,12 @@
+---
+sql:
+  driver_name: postgres
+  data_source: postgres://megacommerce:megacommerce@127.0.0.1:5432/megacommerce?sslmode=disable
+  max_idle_conns: 2
+  max_open_conns: 10
+  conn_max_lifetime_milliseconds: 600000
+  conn_max_idle_time_milliseconds: 120000
+  trace: true
+  at_rest_encrypt_key: ""
+  query_timeout: 3000
+  disable_database_search: false
