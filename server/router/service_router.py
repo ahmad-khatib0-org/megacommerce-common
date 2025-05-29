@@ -8,3 +8,9 @@ class CommonServiceRouter(common_pb2_grpc.CommonServiceServicer):
 
   def ConfigGet(self, request, context):
     return self.config.get_config()
+
+  def ConfigUpdate(self, request, context):
+    return self.config.update_config(request.comfig)
+
+  def ConfigListener(self, request, context):
+    return self.config.listen_config(request.client_id)
