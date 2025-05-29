@@ -1,16 +1,4 @@
 ---
-sql:
-  driver_name: postgres
-  data_source: postgres://megacommerce:megacommerce@127.0.0.1:5432/megacommerce?sslmode=disable
-  max_idle_conns: 2
-  max_open_conns: 10
-  conn_max_lifetime_milliseconds: 600000
-  conn_max_idle_time_milliseconds: 120000
-  trace: true
-  at_rest_encrypt_key: ""
-  query_timeout: 3000
-  disable_database_search: false
-
 main:
   read_timeout: 30
   write_timeout: 30
@@ -33,6 +21,12 @@ main:
   persistent_notification_max_recipients: 50
   feature_flag_sync_interval_seconds: 60
   allow_synced_drafts: true
+
+services:
+  common_service_grpc_host: localhost
+  common_service_grpc_port: 50051
+  user_service_grpc_host: localhost
+  user_service_grpc_port: 50052
 
 security:
   maximum_login_attempts: 5
@@ -83,6 +77,18 @@ sso:
   discovery_endpoint: "https://discovery.example.com"
   button_text: "Login with SSO"
   button_color: "#000000"
+
+sql:
+  driver_name: postgres
+  data_source: postgres://megacommerce:megacommerce@127.0.0.1:5432/megacommerce?sslmode=disable
+  max_idle_conns: 2
+  max_open_conns: 10
+  conn_max_lifetime_milliseconds: 600000
+  conn_max_idle_time_milliseconds: 120000
+  trace: true
+  at_rest_encrypt_key: ""
+  query_timeout: 3000
+  disable_database_search: false
 
 password:
   minimum_length: 8

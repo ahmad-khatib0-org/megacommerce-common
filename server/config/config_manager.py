@@ -1,12 +1,13 @@
-import psycopg2
+from queue import Queue
 import threading
-from queue import Queue, Empty
+
+from common.v1 import common_pb2, common_pb2_grpc
 from grpc import StatusCode
-from common.v1 import common_pb2_grpc, common_pb2
+import psycopg2
 from ulid import ULID
 
-from utils.db import DatabasePool
 from utils.app_error import AppError
+from utils.db import DatabasePool
 from utils.time_utils import TimeUtils
 
 

@@ -1,11 +1,14 @@
-import grpc
 from concurrent import futures
+
 from common.v1 import common_pb2_grpc
+import grpc
 from grpc_reflection.v1alpha import reflection
+
+from models.app import Config
 from server.router.service_router import CommonServiceRouter
 
 
-def init_grpc():
+def init_grpc(config: Config):
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   router = CommonServiceRouter()
   common_pb2_grpc.add_CommonServiceServicer_to_server(router, server)
@@ -16,7 +19,7 @@ def init_grpc():
   )
   reflection.enable_server_reflection(SERVICE_NAMES, server)
 
-  server.add_insecure_port('[::]:50051')
+  server.add_insecure_port(f"{config.service.grpc_host}:{config.service.grpc_port}")
   print('grpc server is running on 50051')
   server.start()
 

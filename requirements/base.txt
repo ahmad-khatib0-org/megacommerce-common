@@ -1,8 +1,8 @@
+protobuf
 grpcio
 grpcio-tools
-protobuf
-psycopg2-binary
-pyyaml
-protobuf
 grpcio-reflection
+psycopg2-binary
 python-ulid
+pyyaml
+pydantic
