@@ -1,7 +1,26 @@
 [
   {
     "id": "required",
-    "translation": "This field is required"
+    "translation": "this field is required"
   },
-  {}
+  {
+    "id": "invalid_grpc_url",
+    "translation": "invalid grpc url"
+  },
+  {
+    "id": "common_service_connect_error",
+    "translation": "failed to Establish a connection to the common service"
+  },
+  {
+    "id": "failed_to_load_config",
+    "translation": "failed to load configurations"
+  },
+  {
+    "id": "failed_to_parse_config",
+    "translation": "failed to parse configurations"
+  },
+  {
+    "id": "common.config.update.internal",
+    "translation": "faild to update configurations"
+  }
 ]

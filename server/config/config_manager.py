@@ -28,7 +28,7 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
         if not row:
           sc = StatusCode.NOT_FOUND.value[0]
           error = AppError("common.config.get_config", "common.config.not_found", status_code=sc)
-          return common_pb2.ConfigGetResponse(error=error.to_proto)
+          return common_pb2.ConfigGetResponse(error=error.to_proto())
         config = common_pb2.Config(value=row[0])
         return common_pb2.ConfigGetResponse(data=config)
     except Exception as e:
@@ -69,8 +69,8 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
       conn.rollback()
       sc = StatusCode.INTERNAL.value[0]
       error = AppError(
-          "common.config.get_config",
-          "common.config.not_found",
+          "common.config.update_config",
+          "common.config.update.internal",
           status_code=sc,
           detailed_error=str(e),
       )
