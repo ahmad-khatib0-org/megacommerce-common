@@ -50,6 +50,7 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
         with conn.cursor() as cur:
           cur.execute("UPDATE configuration SET active = NULL WHERE active = TRUE")
 
+          # TODO: validate the incoming request
           id = str(ULID())
           cur.execute(
               """

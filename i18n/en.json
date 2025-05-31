@@ -1,26 +1,34 @@
 [
   {
     "id": "required",
-    "translation": "this field is required"
+    "tr": "this field is required"
   },
   {
     "id": "invalid_grpc_url",
-    "translation": "invalid grpc url"
+    "tr": "invalid grpc url"
   },
   {
     "id": "common_service_connect_error",
-    "translation": "failed to Establish a connection to the common service"
+    "tr": "failed to Establish a connection to the common service"
   },
   {
     "id": "failed_to_load_config",
-    "translation": "failed to load configurations"
+    "tr": "failed to load configurations"
   },
   {
     "id": "failed_to_parse_config",
-    "translation": "failed to parse configurations"
+    "tr": "failed to parse configurations"
   },
   {
     "id": "common.config.update.internal",
-    "translation": "faild to update configurations"
+    "tr": "faild to update configurations"
+  },
+  {
+    "id": "common.trans.load_trans.internal",
+    "tr": "failed to lang translations from the trans dir"
+  },
+  {
+    "id": "common.trans.get.not_found",
+    "tr": "the requested language translations is not found, please make sure its supported"
   }
 ]
