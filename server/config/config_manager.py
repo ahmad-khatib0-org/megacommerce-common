@@ -1,7 +1,7 @@
 from queue import Queue
 import threading
 
-from common.v1 import common_pb2, common_pb2_grpc
+from common.v1 import common_pb2_grpc, config_pb2
 from grpc import StatusCode
 import psycopg2
 from ulid import ULID
@@ -28,9 +28,9 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
         if not row:
           sc = StatusCode.NOT_FOUND.value[0]
           error = AppError("common.config.get_config", "common.config.not_found", status_code=sc)
-          return common_pb2.ConfigGetResponse(error=error.to_proto())
-        config = common_pb2.Config(value=row[0])
-        return common_pb2.ConfigGetResponse(data=config)
+          return config_pb2.ConfigGetResponse(error=error.to_proto())
+        config = config_pb2.Config(value=row[0])
+        return config_pb2.ConfigGetResponse(data=config)
     except Exception as e:
       sc = StatusCode.INTERNAL.value[0]
       error = AppError(
@@ -39,7 +39,7 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
           status_code=sc,
           detailed_error=str(e),
       )
-      return common_pb2.ConfigGetResponse(error=error.to_proto())
+      return config_pb2.ConfigGetResponse(error=error.to_proto())
     finally:
       self._db.release_conn(conn)
 
@@ -65,7 +65,7 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
             for q in self._listeners.values():
               q.put(config)
 
-          return common_pb2.ConfigUpdateResponse(data=config)
+          return config_pb2.ConfigUpdateResponse(data=config)
     except Exception as e:
       conn.rollback()
       sc = StatusCode.INTERNAL.value[0]
@@ -75,7 +75,7 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
           status_code=sc,
           detailed_error=str(e),
       )
-      return common_pb2.ConfigGetResponse(error=error.to_proto())
+      return config_pb2.ConfigGetResponse(error=error.to_proto())
 
     finally:
       self._db.release_conn(conn)
@@ -90,7 +90,7 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
         config = q.get()  # Block until update is available
         if config is None:
           break  # graceful shutdown
-        yield common_pb2.ConfigListenerResponse(data=config)
+        yield config_pb2.ConfigListenerResponse(data=config)
     finally:
       with self._lock:
         self._listeners.pop(client_id, None)

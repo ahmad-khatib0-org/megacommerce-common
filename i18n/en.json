@@ -30,5 +30,21 @@
   {
     "id": "common.trans.get.not_found",
     "tr": "the requested language translations is not found, please make sure its supported"
+  },
+  {
+    "id": "failed_get_common_config",
+    "tr": "failed to get the common config"
+  },
+  {
+    "id": "failed_listen_common_config",
+    "tr": "failed to register a listener on common config change"
+  },
+  {
+    "id": "failed_get_common_trans",
+    "tr": "failed to get translatiosn"
+  },
+  {
+    "id": "empty_translation_key",
+    "tr": "an empty translations key"
   }
 ]

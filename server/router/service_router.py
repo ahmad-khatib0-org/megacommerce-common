@@ -1,4 +1,4 @@
-from common.v1 import common_pb2_grpc
+from common.v1 import common_pb2_grpc, types_pb2
 from server.config.config_manager import ConfigManager
 from server.trans.trans_manager import TransManager
 
@@ -7,6 +7,9 @@ class CommonServiceRouter(common_pb2_grpc.CommonServiceServicer):
   def __init__(self) -> None:
     self.config = ConfigManager()
     self.trans = TransManager()
+
+  def Ping(self, request, context):
+    return types_pb2.PingResponse()
 
   def ConfigGet(self, request, context):
     return self.config.get_config()

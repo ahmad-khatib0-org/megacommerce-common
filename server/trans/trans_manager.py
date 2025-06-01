@@ -62,7 +62,6 @@ class TransManager():
     return trans_pb2.TranslationsForLangGetResponse(data=res)
 
   def get_translations(self):
-    print(self._translations)
     data_msg = trans_pb2.TranslationsGetResponse()
     for lang, elements in self._translations.items():
       data_msg.data[lang].CopyFrom(elements)
