@@ -1,11 +1,13 @@
 from queue import Queue
 import threading
+from typing import Optional
 
 from common.v1 import common_pb2_grpc, config_pb2
 from grpc import StatusCode
-import psycopg2
+from psycopg2 import Binary, DatabaseError
 from ulid import ULID
 
+from server.config.config_helpers import ConfigHelpers
 from utils.app_error import AppError
 from utils.db import DatabasePool
 from utils.time_utils import TimeUtils
@@ -15,9 +17,44 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
   def __init__(self) -> None:
     self._lock = threading.Lock()
     self._db = DatabasePool()
-    self._current_config = None
+    self._current_config: Optional[config_pb2.Config] = None
     self._listeners = {}
     self._shutdown_event = threading.Event()
+    self._helpers = ConfigHelpers()
+    self._init_config()
+
+  def _init_config(self):
+    try:
+      conn = self._db.get_conn()
+      with self._lock:
+        with conn.cursor() as cur:
+          cur.execute("SELECT value FROM configurations WHERE active = TRUE")
+          row = cur.fetchone()
+          if row:
+            self._current_config = self._helpers.load_config_from_yaml_bytes(row[0])
+            return
+          else:
+            with open("config_all.yaml", "rb") as f:
+              config_bin = f.read()
+              config_msg = self._helpers.load_config_from_yaml_bytes(config_bin)
+
+              id = str(ULID())
+              cur.execute(
+                  """
+                 INSERT INTO configurations (id, value, created_at, active)
+                 VALUES(%s, %s, %s, TRUE)
+                """, (id, Binary(config_bin), TimeUtils.time_in_milies()))
+              conn.commit()
+              self._current_config = config_msg
+            # store config
+    except DatabaseError as e:
+      raise RuntimeError(
+          AppError(
+              where="common.config._init_config",
+              id="failed_to_load_config",
+              detailed_error=f"failed to load configurations {str(e)}",
+              status_code=StatusCode.INTERNAL.value[0],
+          ))
 
   def get_config(self):
     conn = self._db.get_conn()
@@ -48,16 +85,16 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
     try:
       with self._lock:
         with conn.cursor() as cur:
-          cur.execute("UPDATE configuration SET active = NULL WHERE active = TRUE")
+          cur.execute("UPDATE configurations SET active = NULL WHERE active = TRUE")
 
           # TODO: validate the incoming request
           id = str(ULID())
           cur.execute(
               """
-              INSERT INTO configuration (id, value, created_at, active)
+              INSERT INTO configurations (id, value, created_at, active)
               VALUES(%s, %s, %s, TRUE)
               """,
-              (id, psycopg2.Binary(config.value), TimeUtils.time_in_milies()),
+              (id, Binary(config.value), TimeUtils.time_in_milies()),
           )
           conn.commit()
 
