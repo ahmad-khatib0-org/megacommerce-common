@@ -23,5 +23,5 @@ class CommonServiceRouter(common_pb2_grpc.CommonServiceServicer):
   def TranslationsGet(self, request, context):
     return self.trans.get_translations()
 
-  def TranslationForLangGet(self, request, context):
+  def TranslationsForLangGet(self, request, context):
     return self.trans.get_translation_for_lang(request.lang)

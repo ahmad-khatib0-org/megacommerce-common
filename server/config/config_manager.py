@@ -57,6 +57,8 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
           ))
 
   def get_config(self):
+    if self._current_config is not None:
+      return config_pb2.ConfigGetResponse(data=self._current_config)
     conn = self._db.get_conn()
     try:
       with conn.cursor() as cur:
@@ -66,8 +68,10 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
           sc = StatusCode.NOT_FOUND.value[0]
           error = AppError("common.config.get_config", "common.config.not_found", status_code=sc)
           return config_pb2.ConfigGetResponse(error=error.to_proto())
-        config = config_pb2.Config(value=row[0])
-        return config_pb2.ConfigGetResponse(data=config)
+        data = self._helpers.load_config_from_yaml_bytes(row[0])
+        with self._lock:
+          self._current_config = data
+        return config_pb2.ConfigGetResponse(data=data)
     except Exception as e:
       sc = StatusCode.INTERNAL.value[0]
       error = AppError(
