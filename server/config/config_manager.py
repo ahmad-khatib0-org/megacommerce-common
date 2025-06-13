@@ -7,6 +7,7 @@ from grpc import StatusCode
 from psycopg2 import Binary, DatabaseError
 from ulid import ULID
 
+from models.app import Config
 from server.config.config_helpers import ConfigHelpers
 from utils.app_error import AppError
 from utils.db import DatabasePool
@@ -14,9 +15,10 @@ from utils.time_utils import TimeUtils
 
 
 class ConfigManager(common_pb2_grpc.CommonServiceServicer):
-  def __init__(self) -> None:
+  def __init__(self, service_config: Config) -> None:
     self._lock = threading.Lock()
     self._db = DatabasePool()
+    self._service_config: Config = service_config
     self._current_config: Optional[config_pb2.Config] = None
     self._listeners = {}
     self._shutdown_event = threading.Event()
@@ -24,6 +26,7 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
     self._init_config()
 
   def _init_config(self):
+    self._cleanup_config_in_dev_mode()
     try:
       conn = self._db.get_conn()
       with self._lock:
@@ -53,6 +56,25 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
               where="common.config._init_config",
               id="failed_to_load_config",
               detailed_error=f"failed to load configurations {str(e)}",
+              status_code=StatusCode.INTERNAL.value[0],
+          ), )
+
+  def _cleanup_config_in_dev_mode(self):
+    if self._service_config.service.env != "dev":
+      return
+    conn = self._db.get_conn()
+    try:
+      with self._lock:
+        with conn.cursor() as cur:
+          cur.execute("DELETE FROM configurations")
+          conn.commit()
+    except DatabaseError as e:
+      conn.rollback()
+      raise RuntimeError(
+          AppError(
+              where="common.config._cleanup_config_in_dev_mode",
+              id="failed_to_load_config",
+              detailed_error=f"failed to cleanup configurations in dev mode {str(e)}",
               status_code=StatusCode.INTERNAL.value[0],
           ))
 

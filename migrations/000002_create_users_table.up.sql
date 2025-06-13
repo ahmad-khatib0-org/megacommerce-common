@@ -1,9 +1,8 @@
 CREATE TABLE IF NOT EXISTS users(
   id VARCHAR(26) PRIMARY KEY,
-  business_name VARCHAR(256) NOT NULL UNIQUE,
-  first_name VARCHAR(64) NOT NULL,
-  last_name VARCHAR(64) NOT NULL,
-  nick_name VARCHAR(64) NOT NULL,
+  username VARCHAR(256) NOT NULL UNIQUE,
+  first_name VARCHAR(64),
+  last_name VARCHAR(64),
   email VARCHAR(256) NOT NULL UNIQUE,
   user_type VARCHAR(24) NOT NULL,
   membership VARCHAR(24) NOT NULL,
@@ -28,4 +27,4 @@ CREATE TABLE IF NOT EXISTS users(
 );
 
 CREATE INDEX IF NOT EXISTS users_email_idx ON users(email);
-CREATE INDEX IF NOT EXISTS users_business_name_idx ON users(business_name);
+CREATE INDEX IF NOT EXISTS users_username_idx ON users(username);

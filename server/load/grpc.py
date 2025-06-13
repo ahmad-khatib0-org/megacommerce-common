@@ -10,7 +10,7 @@ from server.router.service_router import CommonServiceRouter
 
 def init_grpc(config: Config):
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  router = CommonServiceRouter()
+  router = CommonServiceRouter(config)
   common_pb2_grpc.add_CommonServiceServicer_to_server(router, server)
 
   SERVICE_NAMES = (

@@ -1,11 +1,12 @@
 from common.v1 import common_pb2_grpc, types_pb2
+from models.app import Config
 from server.config.config_manager import ConfigManager
 from server.trans.trans_manager import TransManager
 
 
 class CommonServiceRouter(common_pb2_grpc.CommonServiceServicer):
-  def __init__(self) -> None:
-    self.config = ConfigManager()
+  def __init__(self, service_config: Config) -> None:
+    self.config = ConfigManager(service_config)
     self.trans = TransManager()
 
   def Ping(self, request, context):

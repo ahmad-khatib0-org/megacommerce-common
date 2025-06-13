@@ -46,5 +46,49 @@
   {
     "id": "empty_translation_key",
     "tr": "an empty translations key"
+  },
+  {
+    "id": "user.create.username.error",
+    "tr": "username should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "user.create.username.valid.error",
+    "tr": "user name should only contains lower case, dot, hyphen, underscore"
+  },
+  {
+    "id": "user.create.email.error",
+    "tr": "must provide a valid email"
+  },
+  {
+    "id": "user.create.first_name.error",
+    "tr": "first name should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "user.create.last_name.error",
+    "tr": "last name should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "password.min_length",
+    "tr": "password minimum length should be {{Min}} characters"
+  },
+  {
+    "id": "password.max_length",
+    "tr": "password maximum length should be {{Max}} characters"
+  },
+  {
+    "id": "password.lowercase",
+    "tr": "password should contains at least one lowercase character"
+  },
+  {
+    "id": "password.uppercase",
+    "tr": "password should contains at least one uppercase character"
+  },
+  {
+    "id": "password.numbers",
+    "tr": "password should contains at least one number"
+  },
+  {
+    "id": "password.symbols",
+    "tr": "password should contains at least one symbol"
   }
 ]
