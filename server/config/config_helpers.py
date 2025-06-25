@@ -1,8 +1,7 @@
 from typing import Union
 import yaml
 from common.v1 import config_pb2
-from google.protobuf.json_format import MessageToDict, ParseDict, ParseError
-from utils.app_error import AppError
+from google.protobuf.json_format import MessageToDict, ParseDict
 
 
 class ConfigHelpers():

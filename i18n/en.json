@@ -60,6 +60,10 @@
     "tr": "must provide a valid email"
   },
   {
+    "id": "user.create.email.not_unique",
+    "tr": "the email is already in use, please provide another one"
+  },
+  {
     "id": "user.create.first_name.error",
     "tr": "first name should be between {{Min}} and {{Max}} characters"
   },
@@ -90,5 +94,37 @@
   {
     "id": "password.symbols",
     "tr": "password should contains at least one symbol"
+  },
+  {
+    "id": "server.internal.error",
+    "tr": "something went wrong unexpectedly, please try again, and if that presets, contact the support team"
+  },
+  {
+    "id": "templates.verify.title",
+    "tr": "Verify {{.SiteName}} Email"
+  },
+  {
+    "id": "templates.verify.welcome",
+    "tr": "Welcome to {{.SiteName}}"
+  },
+  {
+    "id": "templates.verify.part1",
+    "tr": "Thanks for signing up for a {{.SiteName}} account. We are excited to have you on board!"
+  },
+  {
+    "id": "templates.verify.part2",
+    "tr": "Please click on this link"
+  },
+  {
+    "id": "templates.verify.part3",
+    "tr": "which will direct you to a verification page, click the verify account button and your {{.SiteName}} account will be ready to use"
+  },
+  {
+    "id": "templates.verify.part4",
+    "tr": "Please note that this is a one-time use token and it will expire in {{.Hours}} hours."
+  },
+  {
+    "id": "templates.footer.part1",
+    "tr": "Any questions at all, mail us any time: {{.SupportEmail}}, Best wishes, The {{.SiteName}} Team"
   }
 ]

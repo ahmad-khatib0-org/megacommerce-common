@@ -1,7 +1,7 @@
 import json
 from typing import Dict, Optional
 
-from common.v1.error_pb2 import AppError as AppErrorProto  # type: ignore
+from shared.v1.error_pb2 import AppError as AppErrorProto
 
 from types_lib.general import translate_func
 from utils.constants import MAX_ERROR_LENGTH

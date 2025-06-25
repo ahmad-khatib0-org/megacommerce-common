@@ -1,9 +1,8 @@
 ---
 main:
   env: dev
-  read_timeout: 30
-  write_timeout: 30
-  idle_timeout: 60
+  site_name: "MegaCommerce"
+  site_url: "www.megacommerce.com"
   enable_link_previews: true
   restrict_link_previews: ""
   enable_client_performance_debugging: false
@@ -130,13 +129,12 @@ security:
   cors_debug: false
   allow_cookies_for_subdomains: false
   session_cache_in_minutes: 10
-  websocket_secure_port: 443
-  websocket_port: 80
+  email_confirmation_url: http://localhost:3000/auth/email-verification
 
 cache:
   cache_type: "redis"
-  redis_address: "127.0.0.1:6379"
-  redis_password: "yourpassword"
+  redis_address: "0.0.0.0:6379"
+  redis_password: ""
   redis_db: 0
   redis_cache_prefix: "cache:"
   disable_client_cache: false
@@ -147,9 +145,7 @@ metrics:
   listen_address: ":9090"
   enable_client_metrics: true
   enable_notification_metrics: true
-  client_side_user_ids:
-    - "user1"
-    - "user2"
+  client_side_user_ids: []
 
 sso:
   enable: true
@@ -177,6 +173,7 @@ sql:
 
 password:
   minimum_length: 8
+  maximum_length: 72
   lowercase: true
   number: true
   uppercase: true
@@ -217,12 +214,12 @@ email:
   feedback_email: "feedback@example.com"
   reply_to_address: "noreply@example.com"
   enable_smtp_auth: true
-  smtp_username: "smtpuser"
-  smtp_password: "smtppass"
-  smtp_server: "smtp.example.com"
-  smtp_port: "587"
+  smtp_username: ""
+  smtp_password: ""
+  smtp_server: "localhost"
+  smtp_port: "1025"
   smtp_server_timeout: 30
-  connection_security: "TLS"
+  connection_security: ""
   send_push_notifications: true
   push_notification_server: "https://push.example.com"
   push_notification_contents: "full"
@@ -235,6 +232,9 @@ email:
   login_button_color: "#000000"
   login_button_border_color: "#ffffff"
   login_button_text_color: "#ffffff"
+  rate_limiting_memory_size: 65536
+  rate_limiting_per_hour: 20
+  rate_limiting_max_burst: 20
 
 rate_limit:
   enable: true
