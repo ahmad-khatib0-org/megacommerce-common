@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS categories (
   subcategories JSONB NOT NULL,
   edits JSONB NOT NULL,
   version SMALLINT NOT NULL,
-  updated_at TIMESTAMP NOT NULL
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP
 );
