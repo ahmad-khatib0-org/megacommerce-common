@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS categories (
+  id VARCHAR(64) PRIMARY KEY,
+  name VARCHAR(64) NOT NULL,
+  subcategories JSONB NOT NULL,
+  edits JSONB NOT NULL,
+  version SMALLINT NOT NULL,
+  updated_at TIMESTAMP NOT NULL
+);
