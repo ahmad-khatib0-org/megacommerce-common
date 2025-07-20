@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS users(
+CREATE TABLE IF NOT EXISTS users (
   id VARCHAR(26) PRIMARY KEY,
   username VARCHAR(256) NOT NULL UNIQUE,
   first_name VARCHAR(64),
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users(
   password VARCHAR(128) NOT NULL,
   auth_data VARCHAR(128),
   auth_service VARCHAR(32),
-  roles VARCHAR(256) NOT NULL,
+  roles TEXT[] NOT NULL,
   props JSONB,
   notify_props JSONB,
   last_password_update BIGINT,
@@ -21,10 +21,11 @@ CREATE TABLE IF NOT EXISTS users(
   mfa_secret VARCHAR(128),
   last_activity_at BIGINT,
   last_login BIGINT,
-  created_at BIGINT,
+  created_at BIGINT NOT NULL,
   updated_at BIGINT,
   deleted_at BIGINT
 );
 
-CREATE INDEX IF NOT EXISTS users_email_idx ON users(email);
-CREATE INDEX IF NOT EXISTS users_username_idx ON users(username);
+CREATE INDEX IF NOT EXISTS users_email_idx ON users (email);
+
+CREATE INDEX IF NOT EXISTS users_username_idx ON users (username);

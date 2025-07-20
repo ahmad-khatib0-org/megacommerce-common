@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS permissions (
+  id VARCHAR(64) PRIMARY KEY,
+  name VARCHAR(128) NOT NULL,
+  description VARCHAR(1024) NOT NULL,
+  category VARCHAR(64)
+);

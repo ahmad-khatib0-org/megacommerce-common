@@ -25,9 +25,11 @@ main:
 services:
   common_service_grpc_url: 0.0.0.0:50051
   user_service_grpc_url: 0.0.0.0:50052
+  products_service_grpc_url: 0.0.0.0:50053
   jaeger_collector_url: otel-collector:4317
   common_service_prometheus_url: 0.0.0.0:8080
   user_service_prometheus_url: 0.0.0.0:8081
+  products_service_prometheus_url: 0.0.0.0:8082
 
 security:
   restricted_usernames:
