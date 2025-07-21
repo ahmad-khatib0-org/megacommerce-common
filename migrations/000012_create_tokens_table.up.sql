@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS tokens (
+  id VARCHAR(26) PRIMARY KEY,
+  token VARCHAR(256) NOT NULL,
+  type VARCHAR(64) NOT NULL,
+  created_at BIGINT NOT NULL,
+  expires_at BIGINT NOT NULL
+);
