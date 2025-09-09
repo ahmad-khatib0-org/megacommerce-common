@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS users (
   email VARCHAR(256) NOT NULL UNIQUE,
   user_type VARCHAR(24) NOT NULL,
   membership VARCHAR(24) NOT NULL,
+  image VARCHAR(256),
+  image_metadata JSONB,
   is_email_verified BOOLEAN NOT NULL DEFAULT FALSE,
   password VARCHAR(128) NOT NULL,
   auth_data VARCHAR(128),

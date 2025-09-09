@@ -1,7 +1,79 @@
 [
   {
+    "id": "error.canceled",
+    "tr": "The request was canceled"
+  },
+  {
+    "id": "error.unknown",
+    "tr": "An unexpected error occurred. Please contact support if this persists."
+  },
+  {
+    "id": "error.invalid_argument",
+    "tr": "Invalid request data. Please verify your input and try again."
+  },
+  {
+    "id": "error.deadline_exceeded",
+    "tr": "The operation timed out"
+  },
+  {
+    "id": "error.not_found",
+    "tr": "The requested resource was not found."
+  },
+  {
+    "id": "error.already_exists",
+    "tr": "This resource already exists."
+  },
+  {
+    "id": "error.permission_denied",
+    "tr": "You don't have permission to execute this operation"
+  },
+  {
+    "id": "error.resource_exhausted",
+    "tr": "Rate limit exceeded. Please try again later."
+  },
+  {
+    "id": "error.failed_precondition",
+    "tr": "Precondition check failed. Please ensure all requirements are met."
+  },
+  {
+    "id": "error.aborted",
+    "tr": "The operation was aborted. Please try again."
+  },
+  {
+    "id": "error.out_of_range",
+    "tr": "The operation was attempted past the valid range."
+  },
+  {
+    "id": "error.unimplemented",
+    "tr": "The operation is not implemented or is not supported/enabled in this service."
+  },
+  {
+    "id": "error.internal",
+    "tr": "Sorry, Unexpected internal server error. Our team has been notified. Please try again"
+  },
+  {
+    "id": "error.unavailable",
+    "tr": "Service is temporarily unavailable. Please try again in a few moments."
+  },
+  {
+    "id": "error.data_loss",
+    "tr": "Unrecoverable data loss or corruption."
+  },
+  {
+    "id": "error.unauthenticated",
+    "tr": "Authentication required. Please log in and try again."
+  },
+  {
     "id": "required",
     "tr": "this field is required"
+  },
+  {
+    "id": "form.fields.invalid",
+    "tr": "Please correct the required fields first"
+  },
+  {
+    "id": "optional",
+    "tr": "this field is optional"
   },
   {
     "id": "invalid_grpc_url",
@@ -72,6 +144,14 @@
     "tr": "last name should be between {{Min}} and {{Max}} characters"
   },
   {
+    "id": "user.login.use_auth_service.error",
+    "tr": "Please sign in using {{AuthService}}."
+  },
+  {
+    "id": "user.login.password.error",
+    "tr": "Login failed because of invalid password."
+  },
+  {
     "id": "password.min_length",
     "tr": "password minimum length should be {{Min}} characters"
   },
@@ -101,15 +181,15 @@
   },
   {
     "id": "templates.verify.title",
-    "tr": "Verify {{.SiteName}} Email"
+    "tr": "Verify {{SiteName}} Email"
   },
   {
     "id": "templates.verify.welcome",
-    "tr": "Welcome to {{.SiteName}}"
+    "tr": "Welcome to {{SiteName}}"
   },
   {
     "id": "templates.verify.part1",
-    "tr": "Thanks for signing up for a {{.SiteName}} account. We are excited to have you on board!"
+    "tr": "Thanks for signing up for a {{SiteName}} account. We are excited to have you on board!"
   },
   {
     "id": "templates.verify.part2",
@@ -117,14 +197,286 @@
   },
   {
     "id": "templates.verify.part3",
-    "tr": "which will direct you to a verification page, click the verify account button and your {{.SiteName}} account will be ready to use"
+    "tr": "which will direct you to a verification page, click the verify account button and your {{SiteName}} account will be ready to use"
   },
   {
     "id": "templates.verify.part4",
-    "tr": "Please note that this is a one-time use token and it will expire in {{.Hours}} hours."
+    "tr": "Please note that this is a one-time use token and it will expire in {{Hours}} hours."
   },
   {
     "id": "templates.footer.part1",
-    "tr": "Any questions at all, mail us any time: {{.SupportEmail}}, Best wishes, The {{.SiteName}} Team"
+    "tr": "Any questions at all, mail us any time: {{SupportEmail}}, Best wishes, The {{SiteName}} Team"
+  },
+  {
+    "id": "products.title.error",
+    "tr": "title should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "products.description.error",
+    "tr": "description should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "products.currency_code.error",
+    "tr": "currency code is invalid"
+  },
+  {
+    "id": "products.sku.error",
+    "tr": "sku should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "products.tags.not_exists.error",
+    "tr": "the provided tag: {{Tag}} is not existed"
+  },
+  {
+    "id": "products.price.invalid.error",
+    "tr": "the provided price: {{Price}} is invalid"
+  },
+  {
+    "id": "categories.missing_name.error",
+    "tr": "you must provide the category name"
+  },
+  {
+    "id": "categories.not_found.error",
+    "tr": "the requested category is not existed"
+  },
+  {
+    "id": "request.last_id.missing",
+    "tr": "the request last id is missing"
+  },
+  {
+    "id": "request.last_id.invalid",
+    "tr": "the request last id is invalid"
+  },
+  {
+    "id": "username",
+    "tr": "Username"
+  },
+  {
+    "id": "first_name",
+    "tr": "First Name"
+  },
+  {
+    "id": "last_name",
+    "tr": "Last Name"
+  },
+  {
+    "id": "email",
+    "tr": "Email"
+  },
+  {
+    "id": "email.invalid",
+    "tr": "Please provide a valid email address"
+  },
+  {
+    "id": "email.not_found",
+    "tr": "Sorry, No user exists for this email"
+  },
+  {
+    "id": "password",
+    "tr": "Password"
+  },
+  {
+    "id": "password_confirmation",
+    "tr": "Password Confirmation"
+  },
+  {
+    "id": "company_info",
+    "tr": "Company Information"
+  },
+  {
+    "id": "company_logo",
+    "tr": "Company Logo or Image"
+  },
+  {
+    "id": "auth_info",
+    "tr": "Authentication Information"
+  },
+  {
+    "id": "additional_info",
+    "tr": "Addetional Information"
+  },
+  {
+    "id": "click_next_instead",
+    "tr": "please click the next button instead"
+  },
+  {
+    "id": "password_confirmation.do_not_much",
+    "tr": "Password confirmation does not match password"
+  },
+  {
+    "id": "file.size.error",
+    "tr": "Maximum file size must be less than {{Max}} {{Unit}}"
+  },
+  {
+    "id": "image.max_size",
+    "tr": "Maximum image size is {{Max}} {{Unit}}"
+  },
+  {
+    "id": "image.size.error",
+    "tr": "Maximum image size must be less than {{Max}} {{Unit}}"
+  },
+  {
+    "id": "image.data.invalid",
+    "tr": "The image is invalid or currputed"
+  },
+  {
+    "id": "image.data.unknown",
+    "tr": "The attachment data does not represent a valid image"
+  },
+  {
+    "id": "image.dimensions.error",
+    "tr": "The image dimensions must be less than {{Dimensions}}"
+  },
+  {
+    "id": "image.type.unsupported",
+    "tr": "This image type is not supporeted, supported types: {{Types}}"
+  },
+  {
+    "id": "account.create",
+    "tr": "Create an account"
+  },
+  {
+    "id": "account.create.success",
+    "tr": "Account created successfully!"
+  },
+  {
+    "id": "previous",
+    "tr": "Previous"
+  },
+  {
+    "id": "next",
+    "tr": "Next"
+  },
+  {
+    "id": "email_confirm.email.error",
+    "tr": "the provided email is invalid, please make sure the url is correct"
+  },
+  {
+    "id": "email_confirm.token.error",
+    "tr": "the provided token is invalid, please make sure the url is correct"
+  },
+  {
+    "id": "email_confirm.token.expired",
+    "tr": "this confirmation url has been expired"
+  },
+  {
+    "id": "email_confirm.token_id.error",
+    "tr": "the provided token_id is invalid, please make sure the url is correct"
+  },
+  {
+    "id": "email_confirm.token.not_found",
+    "tr": "the confirmation url is invalid or email is not exists"
+  },
+  {
+    "id": "email_confirm.already_confirmed",
+    "tr": "the email is already confirmed"
+  },
+  {
+    "id": "email_confirm.confirmed_successfully",
+    "tr": "The email is confirmed successfully"
+  },
+  {
+    "id": "email_confirm.you_can_to_login",
+    "tr": "You can login to your account and start using it"
+  },
+  {
+    "id": "email_confirm.page.title",
+    "tr": "Megacommerce.com Email Confirmation"
+  },
+  {
+    "id": "go_to_login_page",
+    "tr": "Go to login page"
+  },
+  {
+    "id": "url.search_params.missing",
+    "tr": "The {{Param}} is missing from url, please make sure the url is correct"
+  },
+  {
+    "id": "url.invalid",
+    "tr": "Sorry, The requested url is incorrect"
+  },
+  {
+    "id": "forgot.password.page_title",
+    "tr": "Forogt password"
+  },
+  {
+    "id": "forgot.password.title",
+    "tr": "Did you forgot your password?"
+  },
+  {
+    "id": "forgot.password.subtitle",
+    "tr": "Enter the email address you used to register with"
+  },
+  {
+    "id": "forgot.password.go_back",
+    "tr": "Go back to sign in"
+  },
+  {
+    "id": "forgot.password.send_instructions",
+    "tr": "Send reset instructions"
+  },
+  {
+    "id": "forgot.password.success_message",
+    "tr": "An email sent to you address contains instructions to reset your password"
+  },
+  {
+    "id": "forgot.password.success_message.description",
+    "tr": "If the account exists, a password reset email will be sent to: {{Email}}, Please check your inbox."
+  },
+  {
+    "id": "forgot.password.sso.error",
+    "tr": "Unable to reset password for SSO accounts."
+  },
+  {
+    "id": "forgot.password.email.not_found",
+    "tr": "No user exists for this email"
+  },
+  {
+    "id": "templates.welcome",
+    "tr": "Welcome to {{SiteName}}"
+  },
+  {
+    "id": "templates.click_on_link",
+    "tr": "Please click on this link"
+  },
+  {
+    "id": "templates.reset_password.title",
+    "tr": "Reset {{SiteName}} Email"
+  },
+  {
+    "id": "templates.reset_password.part1",
+    "tr": "We have received your request to reset you account's password"
+  },
+  {
+    "id": "templates.reset_password.part2",
+    "tr": "which will direct you to a password reseting page, fill on your new password and password confirmation, and you will be able to login again to your account"
+  },
+  {
+    "id": "templates.reset_password.part3",
+    "tr": "Please note that this is a one-time use link and it will expire in {{Hours}} hours."
+  },
+  {
+    "id": "tokens.token.invalid",
+    "tr": "Sorry, The sent token is invalid, please make sure the url is correct"
+  },
+  {
+    "id": "tokens.token.expired",
+    "tr": "Sorry, This {{Type}} token has been expired"
+  },
+  {
+    "id": "tokens.token.not_found",
+    "tr": "Sorry, This {{Type}} token is invalid or not exists"
+  },
+  {
+    "id": "tokens.token_id.error",
+    "tr": "Sorry, The sent token_id is invalid, please make sure the url is correct"
+  },
+  {
+    "id": "jwt.payload.missing",
+    "tr": "Sorry, the authentication payload is missing, please login first"
+  },
+  {
+    "id": "jwt.payload.invalid",
+    "tr": "Sorry, the authentication payload is invalid, please login first"
   }
 ]
