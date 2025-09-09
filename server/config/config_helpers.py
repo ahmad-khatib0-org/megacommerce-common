@@ -11,7 +11,7 @@ class ConfigHelpers():
     if isinstance(data, memoryview):
       data = data.tobytes()
     yaml_dict = yaml.safe_load(data.decode())
-    return ParseDict(yaml_dict, config_pb2.Config())
+    return ParseDict(yaml_dict, config_pb2.Config(), ignore_unknown_fields=False)
 
   def dump_config_to_yaml_bytes(self, config: config_pb2.Config) -> bytes:
     """Convert Config proto message to YAML binary."""

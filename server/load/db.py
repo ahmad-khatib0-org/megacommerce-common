@@ -14,4 +14,5 @@ def init_db(sql):
       dbname=parsed.path.lstrip("/"),
       user=parsed.username,
       password=parsed.password,
+      port=parsed.port,
   )

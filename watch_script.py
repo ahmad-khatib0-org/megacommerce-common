@@ -20,7 +20,7 @@ def load_gitignore_patterns(gitignore_path=".gitignore"):
 
 class RestartOnChangeHandler(PatternMatchingEventHandler):
   def __init__(self, command, ignore_spec=None):
-    super().__init__(patterns=["*.py"], ignore_directories=True)
+    super().__init__(patterns=["*.py", "i18n/*.json"], ignore_directories=True)
     self.command = command
     self.process = None
     self.ignore_spec = ignore_spec

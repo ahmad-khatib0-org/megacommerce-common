@@ -30,6 +30,21 @@ services:
   common_service_prometheus_url: 0.0.0.0:8080
   user_service_prometheus_url: 0.0.0.0:8081
   products_service_prometheus_url: 0.0.0.0:8082
+  users_service_max_receive_message_size_bytes: 52428800
+  auth_service_grpc_url: 0.0.0.0:50054
+  auth_service_prometheus_url: 0.0.0.0:8083
+
+oauth:
+  oauth_provider_url: http://hydra:4444
+  oauth_client_id: authz-client
+  oauth_client_secret: super-secret
+  oauth_db_dsn: postgres://hydra:hydra-password@hydra-db:5432/hydra?sslmode=disable
+  oauth_redirect_url: http://localhost:3000/callback
+  oauth_login_url: http://localhost:3001/login
+  oauth_consent_url: http://localhost:3001/consent
+  oauth_response_type: code
+  oauth_scope: ["openid", "offline"]
+  oauth_admin_url: http://localhost:4445
 
 security:
   restricted_usernames:
@@ -132,6 +147,7 @@ security:
   allow_cookies_for_subdomains: false
   session_cache_in_minutes: 10
   email_confirmation_url: http://localhost:3000/auth/email-verification
+  password_reset_url: http://localhost:3000/auth/reset-password
   token_confirmation_expiry_in_hours: 24
   token_password_reset_expiry_in_hours: 24
 
@@ -165,7 +181,7 @@ sso:
 
 sql:
   driver_name: postgres
-  data_source: postgres://megacommerce:megacommerce@127.0.0.1:5432/megacommerce?sslmode=disable
+  data_source: postgresql://megacommerce:megacommerce@localhost:26257/megacommerce?sslmode=require
   max_idle_conns: 2
   max_open_conns: 10
   conn_max_lifetime_milliseconds: 600000
@@ -188,23 +204,16 @@ file:
   enable_file_attachments: true
   enable_mobile_upload: true
   enable_mobile_download: true
-  max_file_size: 10485760
   max_image_resolution: 1920
   max_image_decoder_concurrency: 4
-  driver_name: "local"
-  directory: "/var/files"
-  enable_public_link: true
-  extract_content: false
-  archive_recursion: false
-  public_link_salt: "salt"
-  initial_font: "Arial"
-  amazon_s3_access_key_id: "your-access-key"
-  amazon_s3_secret_access_key: "your-secret"
-  amazon_s3_bucket: "your-bucket"
-  amazon_s3_path_prefix: "uploads/"
-  amazon_s3_region: "us-west-1"
-  amazon_s3_endpoint: "s3.amazonaws.com"
-  amazon_s3_ssl: true
+  driver_name: "s3"
+  amazon_s3_access_key_id: "minioadmin"
+  amazon_s3_secret_access_key: "minioadmin"
+  amazon_s3_bucket: "uploads"
+  amazon_s3_path_prefix: "files/"
+  amazon_s3_region: "us-east-1"
+  amazon_s3_endpoint: "localhost:9000"
+  amazon_s3_ssl: false
   amazon_s3_sign_v2: false
   amazon_s3_sse: false
   amazon_s3_trace: false
@@ -265,7 +274,7 @@ support:
 localization:
   default_server_locale: "en"
   default_client_locale: "en"
-  available_locales: "en,fr,es"
+  available_locales: ["en"]
 
 ldap:
   enable: true
