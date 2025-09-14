@@ -21,7 +21,6 @@ main:
   persistent_notification_max_recipients: 50
   feature_flag_sync_interval_seconds: 60
   allow_synced_drafts: true
-
 services:
   common_service_grpc_url: 0.0.0.0:50051
   user_service_grpc_url: 0.0.0.0:50052
@@ -33,123 +32,41 @@ services:
   users_service_max_receive_message_size_bytes: 52428800
   auth_service_grpc_url: 0.0.0.0:50054
   auth_service_prometheus_url: 0.0.0.0:8083
-
 oauth:
   oauth_provider_url: http://hydra:4444
-  oauth_client_id: authz-client
+  oauth_client_id: "51b328f4-22eb-4004-b549-22ea474a5a24"
   oauth_client_secret: super-secret
   oauth_db_dsn: postgres://hydra:hydra-password@hydra-db:5432/hydra?sslmode=disable
   oauth_redirect_url: http://localhost:3000/callback
-  oauth_login_url: http://localhost:3001/login
-  oauth_consent_url: http://localhost:3001/consent
+  oauth_login_url: http://localhost:4000/login
+  oauth_consent_url: http://localhost:4000/consent
   oauth_response_type: code
   oauth_scope: ["openid", "offline"]
   oauth_admin_url: http://localhost:4445
-
+  oauth_backend_url: http://localhost:4000
+  frontend_login_url: http://localhost:3000/auth/login
+  frontend_login_error_url: http://localhost:3000/auth/login/error
 security:
-  restricted_usernames:
-    # System/Admin
-    admin: "Username 'admin' is reserved for system use."
-    administrator: "Username 'administrator' is reserved."
-    root: "Username 'root' is prohibited."
-    superuser: "Username 'superuser' is not allowed."
-    sysadmin: "Username 'sysadmin' is restricted."
-    system: "Username 'system' is invalid."
-    host: "Username 'host' is reserved."
-    localhost: "Username 'localhost' is prohibited."
-
-    # Generic/Placeholder
-    guest: "Username 'guest' is not permitted."
-    anonymous: "Username 'anonymous' is blocked."
-    default: "Username 'default' is invalid."
-    test: "Username 'test' is not allowed."
-    demo: "Username 'demo' is restricted."
-    example: "Username 'example' is prohibited."
-    user: "Username 'user' is too generic."
-    owner: "Username 'owner' is reserved."
-    manager: "Username 'manager' is not permitted."
-
-    # Offensive/Inappropriate (SFW examples)
-    shit: "Offensive language is not allowed."
-    fuck: "Profanity is prohibited."
-    asshole: "Inappropriate username."
-    porn: "Adult content terms are blocked."
-    sex: "Adult content terms are blocked."
-    dick: "Inappropriate username."
-    cocaine: "Drug-related terms are prohibited."
-    weed: "Drug-related terms are prohibited."
-    heroin: "Drug-related terms are prohibited."
-
-    # Platform/Technical
-    support: "Username 'support' is reserved for official use."
-    help: "Username 'help' is reserved."
-    security: "Username 'security' is blocked."
-    abuse: "Username 'abuse' is reserved."
-    report: "Username 'report' is prohibited."
-    noreply: "Username 'noreply' is invalid."
-    no-reply: "Username 'no-reply' is invalid."
-    mailer: "Username 'mailer' is restricted."
-    api: "Username 'api' is reserved."
-    dev: "Username 'dev' is reserved."
-    developer: "Username 'developer' is reserved."
-    oauth: "Username 'oauth' is prohibited."
-    sso: "Username 'sso' is blocked."
-    login: "Username 'login' is reserved."
-
-    # Brand/Company (Example)
-    google: "Username 'google' is a protected term."
-    microsoft: "Username 'microsoft' is a protected term."
-    netflix: "Username 'netflix' is a protected term."
-    gmail: "Username 'gmail' is a protected term."
-    windows: "Username 'windows' is a protected term."
-    photoshop: "Username 'photoshop' is a protected term."
-
-    # Technical Conflicts
-    http: "Username 'http' is prohibited."
-    ftp: "Username 'ftp' is prohibited."
-    ssh: "Username 'ssh' is prohibited."
-    select: "Username 'select' is invalid."
-    insert: "Username 'insert' is invalid."
-    drop: "Username 'drop' is invalid."
-    "null": "Username 'null' is prohibited."
-    "true": "Username 'true' is prohibited."
-    "false": "Username 'false' is prohibited."
-    undefined: "Username 'undefined' is prohibited."
-    index: "Username 'index' is invalid."
-    config: "Username 'config' is invalid."
-    main: "Username 'main' is invalid."
-
-    # Placeholder/Generic
-    username: "Username 'username' is too generic."
-    firstname: "Username 'firstname' is invalid."
-    lastname: "Username 'lastname' is invalid."
-    yourname: "Username 'yourname' is invalid."
-    unknown: "Username 'unknown' is prohibited."
-    invalid: "Username 'invalid' is... invalid."
-    "123": "Numeric usernames are not allowed."
-    "123456": "Numeric usernames are not allowed."
-    password: "Username 'password' is insecure."
-    qwerty: "Username 'qwerty' is insecure."
+  access_token_expiry_web_in_hours: 2
+  access_token_expiry_mobile_in_hours: 2
+  access_token_expiry_sso_in_hours: 2
+  access_token_cache_in_minutes: 10
   maximum_login_attempts: 5
+  terminate_sessions_on_password_change: true
+  email_confirmation_url: http://localhost:3000/auth/email-verification
+  password_reset_url: http://localhost:3000/auth/reset-password
+  token_confirmation_expiry_in_hours: 24
+  token_password_reset_expiry_in_hours: 24
   enable_insecure_outgoing_connections: false
   enable_multifactor_authentication: true
   enforce_multifactor_authentication: false
   enable_oauth_service_provider: true
   enable_outgoing_oauth_connections: true
-  terminate_sessions_on_password_change: true
-  session_length_web_in_hours: 24
-  session_length_mobile_in_hours: 24
-  session_length_sso_in_hours: 24
   allow_cors_from: "*"
   cors_exposed_headers: "X-Custom-Header"
   cors_allow_credentials: true
   cors_debug: false
   allow_cookies_for_subdomains: false
-  session_cache_in_minutes: 10
-  email_confirmation_url: http://localhost:3000/auth/email-verification
-  password_reset_url: http://localhost:3000/auth/reset-password
-  token_confirmation_expiry_in_hours: 24
-  token_password_reset_expiry_in_hours: 24
 
 cache:
   cache_type: "redis"
@@ -158,7 +75,6 @@ cache:
   redis_db: 0
   redis_cache_prefix: "cache:"
   disable_client_cache: false
-
 metrics:
   enable: true
   block_profile_rate: 1
@@ -166,7 +82,6 @@ metrics:
   enable_client_metrics: true
   enable_notification_metrics: true
   client_side_user_ids: []
-
 sso:
   enable: true
   secret: "sso-secret"
@@ -178,10 +93,9 @@ sso:
   discovery_endpoint: "https://discovery.example.com"
   button_text: "Login with SSO"
   button_color: "#000000"
-
 sql:
   driver_name: postgres
-  data_source: postgresql://megacommerce:megacommerce@localhost:26257/megacommerce?sslmode=require
+  data_source: postgresql://megacommerce@localhost:26257/megacommerce?sslmode=disable
   max_idle_conns: 2
   max_open_conns: 10
   conn_max_lifetime_milliseconds: 600000
@@ -190,7 +104,6 @@ sql:
   at_rest_encrypt_key: ""
   query_timeout: 3000
   disable_database_search: false
-
 password:
   minimum_length: 8
   maximum_length: 72
@@ -199,7 +112,6 @@ password:
   uppercase: true
   symbol: true
   enable_forgot_link: true
-
 file:
   enable_file_attachments: true
   enable_mobile_upload: true
@@ -220,7 +132,6 @@ file:
   amazon_s3_request_timeout_milliseconds: 5000
   amazon_s3_upload_part_size_bytes: 5242880
   amazon_s3_storage_class: "STANDARD"
-
 email:
   send_email_notifications: true
   require_email_verification: true
@@ -248,7 +159,6 @@ email:
   rate_limiting_memory_size: 65536
   rate_limiting_per_hour: 20
   rate_limiting_max_burst: 20
-
 rate_limit:
   enable: true
   per_sec: 10
@@ -257,11 +167,9 @@ rate_limit:
   vary_by_remote_addr: true
   vary_by_user: true
   vary_by_header: "X-Forwarded-For"
-
 privacy:
   show_email_address: false
   show_full_name: true
-
 support:
   terms_of_service_link: "https://example.com/tos"
   privacy_policy_link: "https://example.com/privacy"
@@ -270,12 +178,10 @@ support:
   report_a_problem_link: "https://example.com/report"
   forgot_password_link: "https://example.com/forgot"
   support_email: "support@example.com"
-
 localization:
   default_server_locale: "en"
   default_client_locale: "en"
   available_locales: ["en"]
-
 ldap:
   enable: true
   enable_sync: true
@@ -308,7 +214,6 @@ ldap:
   login_button_color: "#0000FF"
   login_button_border_color: "#000000"
   login_button_text_color: "#FFFFFF"
-
 saml:
   enable: true
   enable_sync_with_ldap: false
@@ -343,10 +248,8 @@ saml:
   login_button_color: "#0000FF"
   login_button_border_color: "#000000"
   login_button_text_color: "#FFFFFF"
-
 native_app:
-  app_custom_url_schemes:
-    - "myapp://"
+  app_custom_url_schemes: ["myapp://"]
   app_download_link: "https://example.com/download"
   android_app_download_link: "https://play.google.com/store/apps/details?id=com.example"
   ios_app_download_link: "https://apps.apple.com/app/id123456789"
@@ -354,7 +257,6 @@ native_app:
   mobile_enable_biometrics: true
   mobile_prevent_screen_capture: false
   mobile_jailbreak_protection: true
-
 meilisearch:
   server_url: "http://localhost:7700"
   master_key: "masterKey"
@@ -366,7 +268,6 @@ meilisearch:
   index_prefix: "myapp_"
   search_cutoff_ms: 1000
   enable_typo_tolerance: true
-
 bleve:
   index_dir: "/var/bleve"
   enable_indexing: true
@@ -374,7 +275,6 @@ bleve:
   enable_autocomplete: true
   bulk_indexing_time_window_seconds: 5
   batch_size: 100
-
 data_retention:
   enable_message_deletion: true
   enable_file_deletion: true
@@ -386,7 +286,6 @@ data_retention:
   batch_size: 100
   time_between_batches_milliseconds: 500
   retention_ids_batch_size: 100
-
 image_proxy:
   enable: true
   image_proxy_type: "remote"
