@@ -65,11 +65,27 @@
   },
   {
     "id": "required",
-    "tr": "this field is required"
+    "tr": "This field is required"
   },
   {
     "id": "form.fields.invalid",
     "tr": "Please correct the required fields first"
+  },
+  {
+    "id": "form.fields.positive",
+    "tr": "This field must be a positive number"
+  },
+  {
+    "id": "form.fields.invalid_number",
+    "tr": "This field must be valid number"
+  },
+  {
+    "id": "form.fields.bigger_than_zero",
+    "tr": "This field must greater than 0"
+  },
+  {
+    "id": "form.field.invalid_input",
+    "tr": "The provided input is invalid"
   },
   {
     "id": "optional",
@@ -232,6 +248,10 @@
     "tr": "currency code is invalid"
   },
   {
+    "id": "products.sku",
+    "tr": "Contribution SKU"
+  },
+  {
     "id": "products.sku.error",
     "tr": "sku should be between {{Min}} and {{Max}} characters"
   },
@@ -242,6 +262,194 @@
   {
     "id": "products.price.invalid.error",
     "tr": "the provided price: {{Price}} is invalid"
+  },
+  {
+    "id": "products.quantity",
+    "tr": "Quantity"
+  },
+  {
+    "id": "products.currency",
+    "tr": "Price Currency"
+  },
+  {
+    "id": "products.quantity.min.error",
+    "tr": "Minimum Quantity is {{Min}}"
+  },
+  {
+    "id": "products.your_price",
+    "tr": "Your Price"
+  },
+  {
+    "id": "products.offering_condition",
+    "tr": "Offering Condition"
+  },
+  {
+    "id": "products.offering_condition.new",
+    "tr": "New Item"
+  },
+  {
+    "id": "products.offering_condition.used",
+    "tr": "Used Item"
+  },
+  {
+    "id": "products.condition_note.error",
+    "tr": "The Note should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "products.condition_note",
+    "tr": "Note about the condition of this item"
+  },
+  {
+    "id": "products.list_price",
+    "tr": "List Price"
+  },
+  {
+    "id": "products.list_price.error",
+    "tr": "List Price must be greater than or equal to Your Price"
+  },
+  {
+    "id": "products.fulfillment_type",
+    "tr": "Fulfillment Type"
+  },
+  {
+    "id": "products.fulfillment_type.supplier",
+    "tr": "Fulfillment By Supplier"
+  },
+  {
+    "id": "products.fulfillment_type.megacommerce",
+    "tr": "Fulfillment By Megacommerce"
+  },
+  {
+    "id": "products.sale_price",
+    "tr": "Sale Price"
+  },
+  {
+    "id": "products.sale_price_start",
+    "tr": "Selling Start At"
+  },
+  {
+    "id": "products.sale_price_start.required",
+    "tr": "Sale start date is required when sale price is set"
+  },
+  {
+    "id": "products.sale_price_end",
+    "tr": "Selling End At"
+  },
+  {
+    "id": "products.sale_price_end.required",
+    "tr": "Sale end date is required when sale price is set"
+  },
+  {
+    "id": "products.sale_price_end.lesser",
+    "tr": "Sale end date must be after start date"
+  },
+  {
+    "id": "products.processing_time",
+    "tr": "Processing Time In Days"
+  },
+  {
+    "id": "products.minimum_order_options",
+    "tr": "Add Minimum Order Options & Discounts"
+  },
+  {
+    "id": "products.minimum_order_options.max.error",
+    "tr": "You can at most add {{Min}} minimum order options"
+  },
+  {
+    "id": "products.minimum_order_count",
+    "tr": "Minimum Order Of Items"
+  },
+  {
+    "id": "products.per_item_price",
+    "tr": "Per Item Price"
+  },
+  {
+    "id": "products.minimum_order_options.diselect.warn",
+    "tr": "Please note: Diselecting this checkbox will remove your already provided data"
+  },
+  {
+    "id": "products.identity",
+    "tr": "Product Identity"
+  },
+  {
+    "id": "products.description",
+    "tr": "Product Description"
+  },
+  {
+    "id": "products.details",
+    "tr": "Product Details"
+  },
+  {
+    "id": "products.variants",
+    "tr": "Product Variants"
+  },
+  {
+    "id": "products.media",
+    "tr": "Product Media"
+  },
+  {
+    "id": "products.media.description",
+    "tr": "You must provide at least one image for your product, and at most 10 images are allowed, please try to choose clear, descriptive, optimized ... images"
+  },
+  {
+    "id": "products.offer",
+    "tr": "Offer"
+  },
+  {
+    "id": "products.safety_and_compliance",
+    "tr": "Safety & Compliance"
+  },
+  {
+    "id": "products.title",
+    "tr": "Product Title"
+  },
+  {
+    "id": "products.type",
+    "tr": "Product Type"
+  },
+  {
+    "id": "products.type.required",
+    "tr": "Please select a type"
+  },
+  {
+    "id": "products.has_variations",
+    "tr": "This product has variations"
+  },
+  {
+    "id": "products.brand_name",
+    "tr": "Brand Name"
+  },
+  {
+    "id": "products.brand_name.error",
+    "tr": "Brand name should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "products.no_brand_name",
+    "tr": "This product does not have a brand name"
+  },
+  {
+    "id": "products.external_product_id",
+    "tr": "External Product ID"
+  },
+  {
+    "id": "products.no_external_product_id",
+    "tr": "I don't have a Product ID"
+  },
+  {
+    "id": "products.bullet_points",
+    "tr": "Bullet points"
+  },
+  {
+    "id": "products.bullet_points.bullet_point",
+    "tr": "Bullet point"
+  },
+  {
+    "id": "products.bullet_points.delete",
+    "tr": "Delete A Bullet Point"
+  },
+  {
+    "id": "products.bullet_points.error",
+    "tr": "Bullet point should be between {{Min}} and {{Max}} characters"
   },
   {
     "id": "categories.missing_name.error",
@@ -529,7 +737,7 @@
   },
   {
     "id": "oauth.server_error.internal",
-    "tr": "Authentication service is temporarily unavailable. Please try again later."
+    "tr": "Authentication service is temporarily unavailable. Please try again in a few moments."
   },
   {
     "id": "oauth.server_error.external",
@@ -550,5 +758,121 @@
   {
     "id": "oauth.network_error",
     "tr": "Network connection issue. Please check your internet connection and try again."
+  },
+  {
+    "id": "oauth.login_challenge.missing",
+    "tr": "The login challenge is missing from the URL, please make sure to not manipulate the Link, Please Try again, if issue presists, Please contact support."
+  },
+  {
+    "id": "oauth.login_state.invalid",
+    "tr": "The login token state is missing from the URL/cookies, make sure to not manipulate the Link, Please Try again, if issue presists, Please contact support."
+  },
+  {
+    "id": "oauth.login_code.invalid",
+    "tr": "The login token code is missing from the URL, make sure to not manipulate the Link, Please Try again, if issue presists, Please contact support."
+  },
+  {
+    "id": "search.looking_for",
+    "tr": "I'm looking for..."
+  },
+  {
+    "id": "location.ship_to",
+    "tr": "Ship to"
+  },
+  {
+    "id": "translation.website_language",
+    "tr": "Website Language"
+  },
+  {
+    "id": "translation.language",
+    "tr": "Language"
+  },
+  {
+    "id": "currencies.currency",
+    "tr": "Currency"
+  },
+  {
+    "id": "save",
+    "tr": "Save"
+  },
+  {
+    "id": "welcome",
+    "tr": "Welcome"
+  },
+  {
+    "id": "signin",
+    "tr": "Signin"
+  },
+  {
+    "id": "register",
+    "tr": "Register"
+  },
+  {
+    "id": "cart",
+    "tr": "Cart"
+  },
+  {
+    "id": "shipping.free_shipping",
+    "tr": "Free shipping"
+  },
+  {
+    "id": "shipping.free_shipping_desc",
+    "tr": "Free shipping on all Choice items."
+  },
+  {
+    "id": "shipping.fast_delivery",
+    "tr": "Fast delivery"
+  },
+  {
+    "id": "shipping.fast_delivery_get_refound",
+    "tr": "Fast delivery & get refunds for any issues"
+  },
+  {
+    "id": "shipping.fast_delivery_desc",
+    "tr": "€1.00 coupon code if delayed. Refund if package lost. Refund if items damaged. Refund if no delivery in 45 days"
+  },
+  {
+    "id": "shipping.free_return",
+    "tr": "Free return"
+  },
+  {
+    "id": "shipping.free_return_on_millions_of_items",
+    "tr": "Free returns on millions of items"
+  },
+  {
+    "id": "shipping.free_return_desc",
+    "tr": "Not satisfied with your order? Send it back within 90 days after the order was placed or 15 days after the order was received (depending on where it shipped from). The first return on each order is free (up to 5 times per month)."
+  },
+  {
+    "id": "categories.all_categories",
+    "tr": "All Categories"
+  },
+  {
+    "id": "megacommerce.commitment",
+    "tr": "Megacommerce Commitment"
+  },
+  {
+    "id": "cancel",
+    "tr": "Cancel"
+  },
+  {
+    "id": "back",
+    "tr": "Back"
+  },
+  {
+    "id": "save_and_continue",
+    "tr": "Save & Continue"
+  },
+  {
+    "id": "add_more",
+    "tr": "Add More"
+  },
+  {
+    "id": "confirm",
+    "tr": "Confirm"
+  },
+  {
+    "id": "actions.delete_item",
+    "tr": "Delete this item"
   }
 ]
