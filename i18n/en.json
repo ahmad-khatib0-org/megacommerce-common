@@ -88,6 +88,18 @@
     "tr": "The provided input is invalid"
   },
   {
+    "id": "form.field.select.at_least_one",
+    "tr": "Please select at least one option"
+  },
+  {
+    "id": "form.field.select.not_applicable_or_rest",
+    "tr": "You must select either: Not Applicable, or one of the other available options, not both"
+  },
+  {
+    "id": "form.field.checkbox.checked.error",
+    "tr": "This check must be accepted"
+  },
+  {
     "id": "optional",
     "tr": "this field is optional"
   },
@@ -236,6 +248,10 @@
     "tr": "Any questions at all, mail us any time: {{SupportEmail}}, Best wishes, The {{SiteName}} Team"
   },
   {
+    "id": "products.create.successfully",
+    "tr": "title should be between {{Min}} and {{Max}} characters"
+  },
+  {
     "id": "products.title.error",
     "tr": "title should be between {{Min}} and {{Max}} characters"
   },
@@ -322,6 +338,10 @@
   {
     "id": "products.sale_price",
     "tr": "Sale Price"
+  },
+  {
+    "id": "products.sale_price.add",
+    "tr": "Add Sale Price Option"
   },
   {
     "id": "products.sale_price_start",
@@ -412,6 +432,10 @@
     "tr": "Please select a type"
   },
   {
+    "id": "products.variations",
+    "tr": "Product's Variations"
+  },
+  {
     "id": "products.has_variations",
     "tr": "This product has variations"
   },
@@ -450,6 +474,82 @@
   {
     "id": "products.bullet_points.error",
     "tr": "Bullet point should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "products.variations.add",
+    "tr": "Add Another Variation"
+  },
+  {
+    "id": "products.variations.remove",
+    "tr": "Remove Variation"
+  },
+  {
+    "id": "products.variations.remove.warn",
+    "tr": "Are you sure you want this Product's Variant?"
+  },
+  {
+    "id": "products.variations.shared.desc",
+    "tr": "These input fields are shared between all your product's variations and can not be customized for each variation"
+  },
+  {
+    "id": "products.variations.title",
+    "tr": "Variation Title"
+  },
+  {
+    "id": "products.media.assign_images",
+    "tr": "Assign These Images"
+  },
+  {
+    "id": "products.media.assign_images.unselected",
+    "tr": "Please select a Product's Variant first to assign it these images"
+  },
+  {
+    "id": "products.media.assign_images.no_images",
+    "tr": "No images to assign for a Product's Variant, Please select some images first"
+  },
+  {
+    "id": "products.media.variant_images.exceeded",
+    "tr": "The count of images will exceed the max: {{Max}} allowed images per Product's Variant, Please try to remove some of them first"
+  },
+  {
+    "id": "products.media.variant_images.exceeded_for_variant",
+    "tr": "The Product's Variant that is titled with: {{Title}} has exceeded the max {{Max}} of allowed images, Please remove some of them"
+  },
+  {
+    "id": "products.media.variant_images.missing_for_variant",
+    "tr": "The Product's Variant that is titled with: {{Title}} has no assigned images, Please provide at leaset {{Min}}, and at most {{Max}} images"
+  },
+  {
+    "id": "products.media.variant_images.not_found",
+    "tr": "The selected image is not found"
+  },
+  {
+    "id": "products.media.variant_images.remove",
+    "tr": "Are you sure you want to remove this Product's Variant image?"
+  },
+  {
+    "id": "products.media.variant_images.not_provided",
+    "tr": "Please provide some images for each of your product's variants"
+  },
+  {
+    "id": "products.media.assign_images.info",
+    "tr": "Assign the selected images in the uploader section to the selected Product's Variant"
+  },
+  {
+    "id": "products.variations.title.desc",
+    "tr": "This title is internal and not exposed to the end-user, it helps you to identify the this product's variant, assign it images, media files, a price, discount, sale price... an example: if product type is a T-Shirt, Variant Title could be xl-black so it identified by the form of size-color"
+  },
+  {
+    "id": "products.variations.images",
+    "tr": "Variation's Images"
+  },
+  {
+    "id": "products.variations.images.related",
+    "tr": "These images related to variant"
+  },
+  {
+    "id": "products.images.length.error",
+    "tr": "You must provid: at least {{Min}} images, and at most {{Max}} images for your product"
   },
   {
     "id": "categories.missing_name.error",
@@ -874,5 +974,17 @@
   {
     "id": "actions.delete_item",
     "tr": "Delete this item"
+  },
+  {
+    "id": "actions.try_again",
+    "tr": "Try again"
+  },
+  {
+    "id": "upload.uploading_file",
+    "tr": "Uploading file..."
+  },
+  {
+    "id": "upload.uploading_complete",
+    "tr": "Uploading Completed"
   }
 ]
