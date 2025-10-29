@@ -1,4 +1,5 @@
-from common.v1 import common_pb2_grpc, types_pb2
+from shared.v1 import types_pb2
+from common.v1 import common_pb2_grpc
 from models.app import Config
 from server.config.config_manager import ConfigManager
 from server.trans.trans_manager import TransManager

@@ -34,7 +34,7 @@ services:
   auth_service_prometheus_url: 0.0.0.0:8083
 oauth:
   oauth_provider_url: http://localhost:4444
-  oauth_client_id: "0206d5bb-bd13-4a02-ae29-d97baa502a47"
+  oauth_client_id: "febcd505-fa18-4f8b-9af8-87fbbec78a1c"
   oauth_client_secret: super-secret
   oauth_db_dsn: postgres://hydra:hydra-password@hydra-db:5432/hydra?sslmode=disable
   oauth_redirect_url: http://localhost:3000/api/callback
@@ -259,16 +259,24 @@ native_app:
   mobile_prevent_screen_capture: false
   mobile_jailbreak_protection: true
 meilisearch:
-  server_url: "http://localhost:7700"
+  server_urls: ["http://localhost:7700", "http://localhost:7701", "http://localhost:7702"]
   master_key: "masterKey"
   enable_indexing: true
   enable_searching: true
   enable_autocomplete: true
-  batch_size: 100
-  request_timeout_seconds: 30
-  index_prefix: "myapp_"
-  search_cutoff_ms: 1000
   enable_typo_tolerance: true
+  max_concurrency: 100
+  request_timeout_seconds: 30
+  index_prefix: ""
+  search_cutoff_ms: 1000
+  kafka_broker: "localhost:19092"
+  kafka_group_id: "meili-worker-group"
+  kafak_topic: products_outbox
+  kafak_topic_dlq: products_dlq
+  task_max_wait_ms: 30000
+  task_max_retries: 5
+  task_backoff_base_ms: 200
+  shutdown_wait_secs: 30
 bleve:
   index_dir: "/var/bleve"
   enable_indexing: true
