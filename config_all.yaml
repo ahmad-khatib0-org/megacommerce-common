@@ -34,7 +34,7 @@ services:
   auth_service_prometheus_url: 0.0.0.0:8083
 oauth:
   oauth_provider_url: http://localhost:4444
-  oauth_client_id: "febcd505-fa18-4f8b-9af8-87fbbec78a1c"
+  oauth_client_id: "3acb468d-b960-4f11-923e-84ea992ae510"
   oauth_client_secret: super-secret
   oauth_db_dsn: postgres://hydra:hydra-password@hydra-db:5432/hydra?sslmode=disable
   oauth_redirect_url: http://localhost:3000/api/callback
@@ -48,7 +48,7 @@ oauth:
   frontend_login_error_url: http://localhost:3000/auth/login/error
   oauth_grant_access_token_audience: ["megacommerce"]
 security:
-  access_token_expiry_web_in_hours: 2
+  access_token_expiry_web_in_hours: 240
   access_token_expiry_mobile_in_hours: 2
   access_token_expiry_sso_in_hours: 2
   access_token_cache_in_minutes: 10
@@ -125,7 +125,7 @@ file:
   amazon_s3_bucket: "uploads"
   amazon_s3_path_prefix: "files/"
   amazon_s3_region: "us-east-1"
-  amazon_s3_endpoint: "localhost:9000"
+  amazon_s3_endpoint: "http://localhost:9000"
   amazon_s3_ssl: false
   amazon_s3_sign_v2: false
   amazon_s3_sse: false
@@ -300,3 +300,13 @@ image_proxy:
   image_proxy_type: "remote"
   remote_image_proxy_url: "https://imageproxy.example.com"
   remote_image_proxy_options: "resize=800x600"
+products:
+  product_image_max_size_mb: 3
+  product_image_accepted_formats: ["image/png", "image/webp", "image/jpeg", "image/jpg"]
+  product_image_max_width: 2000
+  product_image_max_height: 2000
+  product_image_min_width: 400
+  product_image_min_height: 400
+  product_images_min_count_per_variant: 1
+  product_images_max_count_per_variant: 10
+  product_media_max_direct_uploading_size_mb: 40
