@@ -77,7 +77,11 @@
   },
   {
     "id": "form.fields.invalid_number",
-    "tr": "This field must be valid number"
+    "tr": "This field must be a valid number"
+  },
+  {
+    "id": "form.fields.invalid_date",
+    "tr": "This field must be a valid date"
   },
   {
     "id": "form.fields.bigger_than_zero",
@@ -98,6 +102,50 @@
   {
     "id": "form.field.checkbox.checked.error",
     "tr": "This check must be accepted"
+  },
+  {
+    "id": "form.field.id.missing_or_invalid",
+    "tr": "The form identifier is missing"
+  },
+  {
+    "id": "form.field.unknown",
+    "tr": "The field named: {{FieldName}} is not a known field"
+  },
+  {
+    "id": "form.field.invalid_data",
+    "tr": "The field named: {{FieldName}} contains invalid data"
+  },
+  {
+    "id": "form.field.length_between",
+    "tr": "This field must be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "form.field.min_length",
+    "tr": "Field must be at least {{Min}} characters"
+  },
+  {
+    "id": "form.field.max_length",
+    "tr": "Field must be at most {{Max}} characters"
+  },
+  {
+    "id": "form.field.min",
+    "tr": "Field must not be less than {{Min}}"
+  },
+  {
+    "id": "form.field.max",
+    "tr": "Field must not be greater than {{Max}}"
+  },
+  {
+    "id": "form.field.greater_than",
+    "tr": "Field must be greater than {{Max}}"
+  },
+  {
+    "id": "form.field.less_than",
+    "tr": "Field must be less than {{Min}}"
+  },
+  {
+    "id": "form.field.not_customizable",
+    "tr": "This field is not customizable!"
   },
   {
     "id": "optional",
@@ -248,8 +296,28 @@
     "tr": "Any questions at all, mail us any time: {{SupportEmail}}, Best wishes, The {{SiteName}} Team"
   },
   {
+    "id": "products.list.page_title",
+    "tr": "My Products list"
+  },
+  {
+    "id": "products.create",
+    "tr": "Create Product"
+  },
+  {
+    "id": "products.not_found.error",
+    "tr": "The requested product is not found"
+  },
+  {
     "id": "products.create.successfully",
-    "tr": "title should be between {{Min}} and {{Max}} characters"
+    "tr": "The product created successfully"
+  },
+  {
+    "id": "products.category.missing.error",
+    "tr": "The Product's category is missing"
+  },
+  {
+    "id": "products.subcategory.missing.error",
+    "tr": "The Product's subcategory is missing"
   },
   {
     "id": "products.title.error",
@@ -308,6 +376,10 @@
     "tr": "Used Item"
   },
   {
+    "id": "products.offer.form.missing",
+    "tr": "The Product's Offer form is missing"
+  },
+  {
     "id": "products.condition_note.error",
     "tr": "The Note should be between {{Min}} and {{Max}} characters"
   },
@@ -364,6 +436,10 @@
     "tr": "Sale end date must be after start date"
   },
   {
+    "id": "products.sale_price.lesser",
+    "tr": "Sale Price Must be less than Your Price"
+  },
+  {
     "id": "products.processing_time",
     "tr": "Processing Time In Days"
   },
@@ -374,6 +450,10 @@
   {
     "id": "products.minimum_order_options.max.error",
     "tr": "You can at most add {{Min}} minimum order options"
+  },
+  {
+    "id": "products.minimum_order_options.count.error",
+    "tr": "You need to add at least {{Min}}, and at must {{Max}} minimum order options"
   },
   {
     "id": "products.minimum_order_count",
@@ -398,6 +478,10 @@
   {
     "id": "products.details",
     "tr": "Product Details"
+  },
+  {
+    "id": "products.details.form.missing",
+    "tr": "The Product's Details form is missing"
   },
   {
     "id": "products.variants",
@@ -456,6 +540,26 @@
     "tr": "External Product ID"
   },
   {
+    "id": "products.external_product_id.required",
+    "tr": "External Product ID is required"
+  },
+  {
+    "id": "products.external_product_id.invalid",
+    "tr": "Invalid External Product ID"
+  },
+  {
+    "id": "products.external_product_id_type",
+    "tr": "Type Of Product's ID"
+  },
+  {
+    "id": "products.external_product_id_type.required",
+    "tr": "Type Of Product's ID is required"
+  },
+  {
+    "id": "products.external_product_id_type.invalid",
+    "tr": "Invalid Product's ID type"
+  },
+  {
     "id": "products.no_external_product_id",
     "tr": "I don't have a Product ID"
   },
@@ -472,8 +576,12 @@
     "tr": "Delete A Bullet Point"
   },
   {
-    "id": "products.bullet_points.error",
+    "id": "products.bullet_point.length.error",
     "tr": "Bullet point should be between {{Min}} and {{Max}} characters"
+  },
+  {
+    "id": "products.bullet_points.count.error",
+    "tr": "The provided bullet points must be at least {{Min}} point, and at most {{Max}} points"
   },
   {
     "id": "products.variations.add",
@@ -496,6 +604,10 @@
     "tr": "Variation Title"
   },
   {
+    "id": "products.media.missing_images",
+    "tr": "The Product's Images are not provided"
+  },
+  {
     "id": "products.media.assign_images",
     "tr": "Assign These Images"
   },
@@ -516,8 +628,16 @@
     "tr": "The Product's Variant that is titled with: {{Title}} has exceeded the max {{Max}} of allowed images, Please remove some of them"
   },
   {
+    "id": "products.media.variant_images.exceeded",
+    "tr": "has exceeded the max {{Max}} of allowed images, Please remove some of them"
+  },
+  {
     "id": "products.media.variant_images.missing_for_variant",
     "tr": "The Product's Variant that is titled with: {{Title}} has no assigned images, Please provide at leaset {{Min}}, and at most {{Max}} images"
+  },
+  {
+    "id": "products.media.variant_images.count",
+    "tr": "Please provide at leaset {{Min}}, and at most {{Max}} images"
   },
   {
     "id": "products.media.variant_images.not_found",
@@ -536,8 +656,20 @@
     "tr": "Assign the selected images in the uploader section to the selected Product's Variant"
   },
   {
+    "id": "products.media.form.missing",
+    "tr": "The Product's Media form is missing"
+  },
+  {
     "id": "products.variations.title.desc",
     "tr": "This title is internal and not exposed to the end-user, it helps you to identify the this product's variant, assign it images, media files, a price, discount, sale price... an example: if product type is a T-Shirt, Variant Title could be xl-black so it identified by the form of size-color"
+  },
+  {
+    "id": "products.variations.title.missing",
+    "tr": "The Product Variation's Title is missing"
+  },
+  {
+    "id": "products.variations.title.error",
+    "tr": "The Product Variation's Title should be between {{Min}} and {{Max}} characters"
   },
   {
     "id": "products.variations.images",
@@ -550,6 +682,102 @@
   {
     "id": "products.images.length.error",
     "tr": "You must provid: at least {{Min}} images, and at most {{Max}} images for your product"
+  },
+  {
+    "id": "products.safety_and_compliance.attestation",
+    "tr": "I hereby declare that all information provided in this section is accurate and complete. I understand that Megacommerce may request further documentation and that failure to provide accurate information may result in the removal of my selling privileges."
+  },
+  {
+    "id": "products.safety_and_compliance.form.missing",
+    "tr": "The Product's Safety And Compliance form is missing or empty"
+  },
+  {
+    "id": "orders.idempotency_key.error",
+    "tr": "The idempotency_key is missing or invalid"
+  },
+  {
+    "id": "orders.payment_method_token.error",
+    "tr": "The payment_method_token is missing or invalid"
+  },
+  {
+    "id": "orders.create.missing_items",
+    "tr": "order must include at least one item"
+  },
+  {
+    "id": "orders.create.missing_product_id",
+    "tr": "One of the product id is missing"
+  },
+  {
+    "id": "orders.create.invalid_price",
+    "tr": "One of the product's price is invalid or missing"
+  },
+  {
+    "id": "orders.create.already_created",
+    "tr": "Order already created"
+  },
+  {
+    "id": "orders.status.processing",
+    "tr": "order is currently being processed"
+  },
+  {
+    "id": "orders.product_id.missing",
+    "tr": "The order id is missing"
+  },
+  {
+    "id": "orders.quantity.invalid",
+    "tr": "The order quantity is invalid or missing"
+  },
+  {
+    "id": "orders.price.mismatch",
+    "tr": "The order price is mismatched with the actual product's price"
+  },
+  {
+    "id": "orders.items.out_of_stock",
+    "tr": "some items are out of stock"
+  },
+  {
+    "id": "orders.items.partially_available",
+    "tr": "some items are partially available"
+  },
+  {
+    "id": "orders.items.out_of_stock_for_variant",
+    "tr": "This item is out of stock"
+  },
+  {
+    "id": "orders.items.only_some_available",
+    "tr": "This item has only {{Quantity}} items available to order currently"
+  },
+  {
+    "id": "orders.payment.failed",
+    "tr": "Sorry, payment failed, please try again"
+  },
+  {
+    "id": "orders.finalized.failed",
+    "tr": "order finalized but encountered internal error; support will reconcile, and shortly, the order will be listed in your account"
+  },
+  {
+    "id": "orders.items.not_found_in_inventory",
+    "tr": "This requested item is not found in inventory yet"
+  },
+  {
+    "id": "inventory.reservation.not_found",
+    "tr": "This requested reservation is not found"
+  },
+  {
+    "id": "inventory.release.success",
+    "tr": "Inventory reservation released successfully"
+  },
+  {
+    "id": "inventory.update.invalid_operation",
+    "tr": "The supplied operation is invalid"
+  },
+  {
+    "id": "inventory.update.insufficient_available",
+    "tr": "The requested quantity to subtract is bigger than the available quantity"
+  },
+  {
+    "id": "inventory.update.success",
+    "tr": "Inventory updated successfully"
   },
   {
     "id": "categories.missing_name.error",
@@ -628,12 +856,12 @@
     "tr": "Maximum file size must be less than {{Max}} {{Unit}}"
   },
   {
-    "id": "image.max_size",
+    "id": "image.max_size.error",
     "tr": "Maximum image size is {{Max}} {{Unit}}"
   },
   {
-    "id": "image.size.error",
-    "tr": "Maximum image size must be less than {{Max}} {{Unit}}"
+    "id": "image.min_size.error",
+    "tr": "Minimum image size is {{Min}} {{Unit}}"
   },
   {
     "id": "image.data.invalid",
@@ -644,12 +872,24 @@
     "tr": "The attachment data does not represent a valid image"
   },
   {
-    "id": "image.dimensions.error",
-    "tr": "The image dimensions must be less than {{Dimensions}}"
+    "id": "image.dimensions.max.error",
+    "tr": "The image dimensions must be {{Dimensions}} or less"
+  },
+  {
+    "id": "image.dimensions.min.error",
+    "tr": "The image dimensions must be {{Dimensions}} or more"
+  },
+  {
+    "id": "image.dimensions.unknown.error",
+    "tr": "The image dimensions are unknown, please make sure image is not currputed"
   },
   {
     "id": "image.type.unsupported",
     "tr": "This image type is not supporeted, supported types: {{Types}}"
+  },
+  {
+    "id": "image.type.unknown",
+    "tr": "This image format is not unknown"
   },
   {
     "id": "account.create",
