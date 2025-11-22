@@ -29,9 +29,15 @@ services:
   common_service_prometheus_url: 0.0.0.0:8080
   user_service_prometheus_url: 0.0.0.0:8081
   products_service_prometheus_url: 0.0.0.0:8082
-  users_service_max_receive_message_size_bytes: 52428800
+  users_service_max_receive_message_size_bytes: 52428800 # 50mb
   auth_service_grpc_url: 0.0.0.0:50054
   auth_service_prometheus_url: 0.0.0.0:8083
+  orders_service_grpc_url: 0.0.0.0:50055
+  orders_service_prometheus_url: 0.0.0.0:8084
+  orders_service_max_receive_message_size_bytes: 10485760 # 10mb
+  inventory_service_grpc_url: 0.0.0.0:50056
+  inventory_service_prometheus_url: 0.0.0.0:8085
+  inventory_service_max_receive_message_size_bytes: 10485760 # 10mb
 oauth:
   oauth_provider_url: http://localhost:4444
   oauth_client_id: "3acb468d-b960-4f11-923e-84ea992ae510"
@@ -259,7 +265,8 @@ native_app:
   mobile_prevent_screen_capture: false
   mobile_jailbreak_protection: true
 meilisearch:
-  server_urls: ["http://localhost:7700", "http://localhost:7701", "http://localhost:7702"]
+  server_urls:
+    ["http://localhost:7700", "http://localhost:7701", "http://localhost:7702"]
   master_key: "masterKey"
   enable_indexing: true
   enable_searching: true
@@ -302,7 +309,8 @@ image_proxy:
   remote_image_proxy_options: "resize=800x600"
 products:
   product_image_max_size_mb: 3
-  product_image_accepted_formats: ["image/png", "image/webp", "image/jpeg", "image/jpg"]
+  product_image_accepted_formats:
+    ["image/png", "image/webp", "image/jpeg", "image/jpg"]
   product_image_max_width: 2000
   product_image_max_height: 2000
   product_image_min_width: 400
