@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS order_line_items (
   total_cents BIGINT NOT NULL, -- (quantity * unit_price) - discount + tax
   applied_offer_ids TEXT[], -- array of applied offer/promotion ids
   product_snapshot JSONB, -- full product snapshot for audit/debug
+  status VARCHAR(32) NOT NULL, -- CREATED, CONFIRMED, SHIPPED, CANCELLED, REFUNDED, ...
+  shipping_cents BIGINT NOT NULL, -- shipping in cents
   created_at BIGINT NOT NULL, 
   updated_at BIGINT, 
   FOREIGN KEY(order_id) REFERENCES orders(id)

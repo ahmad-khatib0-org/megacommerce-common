@@ -760,6 +760,22 @@
     "tr": "This requested item is not found in inventory yet"
   },
   {
+    "id": "orders.cancel.can_not_cancel",
+    "tr": "The order can not be canceled"
+  },
+  {
+    "id": "orders.refund.item_missing",
+    "tr": "The order item to be refunded is missing from the request"
+  },
+  {
+    "id": "orders.refund.alread_refunded",
+    "tr": "The requested item to be refund is already refunded"
+  },
+  {
+    "id": "orders.refund.successfully",
+    "tr": "The refund request is received successfully"
+  },
+  {
     "id": "inventory.reservation.not_found",
     "tr": "This requested reservation is not found"
   },

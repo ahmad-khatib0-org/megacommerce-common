@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS orders (
   id VARCHAR(26) PRIMARY KEY, -- order id 
-  user_id UUID NOT NULL,
+  user_id VARCHAR(26) NOT NULL,
   currency_code VARCHAR(3) NOT NULL, -- ISO 4217 e.g. "USD"
   subtotal_cents BIGINT NOT NULL, -- subtotal in cents
   shipping_cents BIGINT NOT NULL, -- shipping in cents
@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS orders (
   status VARCHAR(32) NOT NULL, -- CREATED, CONFIRMED, SHIPPED, CANCELLED, REFUNDED, ...
   created_at BIGINT NOT NULL, -- epoch ms
   updated_at BIGINT,
-  deleted_at BIGINT
+  deleted_at BIGINT,
+  FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
 -- INDEXES for common queries

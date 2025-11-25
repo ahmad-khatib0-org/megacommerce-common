@@ -40,7 +40,7 @@ services:
   inventory_service_max_receive_message_size_bytes: 10485760 # 10mb
 oauth:
   oauth_provider_url: http://localhost:4444
-  oauth_client_id: "3acb468d-b960-4f11-923e-84ea992ae510"
+  oauth_client_id: "168742ea-4eae-4fdf-a374-1f68e8c8c4b6"
   oauth_client_secret: super-secret
   oauth_db_dsn: postgres://hydra:hydra-password@hydra-db:5432/hydra?sslmode=disable
   oauth_redirect_url: http://localhost:3000/api/callback
@@ -265,8 +265,7 @@ native_app:
   mobile_prevent_screen_capture: false
   mobile_jailbreak_protection: true
 meilisearch:
-  server_urls:
-    ["http://localhost:7700", "http://localhost:7701", "http://localhost:7702"]
+  server_urls: ["http://localhost:7700", "http://localhost:7701", "http://localhost:7702"]
   master_key: "masterKey"
   enable_indexing: true
   enable_searching: true
@@ -309,8 +308,7 @@ image_proxy:
   remote_image_proxy_options: "resize=800x600"
 products:
   product_image_max_size_mb: 3
-  product_image_accepted_formats:
-    ["image/png", "image/webp", "image/jpeg", "image/jpg"]
+  product_image_accepted_formats: ["image/png", "image/webp", "image/jpeg", "image/jpg"]
   product_image_max_width: 2000
   product_image_max_height: 2000
   product_image_min_width: 400
