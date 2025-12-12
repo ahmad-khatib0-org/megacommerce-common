@@ -228,6 +228,18 @@
     "tr": "Login failed because of invalid password."
   },
   {
+    "id": "user.profile_information",
+    "tr": "Profile Information"
+  },
+  {
+    "id": "user.profile_information.image",
+    "tr": "Profile Image"
+  },
+  {
+    "id": "user.profile_information.optional_image",
+    "tr": "This image is optional"
+  },
+  {
     "id": "login",
     "tr": "Login"
   },
@@ -296,6 +308,22 @@
     "tr": "Any questions at all, mail us any time: {{SupportEmail}}, Best wishes, The {{SiteName}} Team"
   },
   {
+    "id": "products.no_products_found",
+    "tr": "No products found. Try adjusting your filters."
+  },
+  {
+    "id": "products.specifications",
+    "tr": "Product's Specifications"
+  },
+  {
+    "id": "products.frequently_asked_questions",
+    "tr": "Frequently Asked Questions"
+  },
+  {
+    "id": "products.ask_a_question",
+    "tr": "Ask a question"
+  },
+  {
     "id": "products.list.page_title",
     "tr": "My Products list"
   },
@@ -350,6 +378,10 @@
   {
     "id": "products.quantity",
     "tr": "Quantity"
+  },
+  {
+    "id": "products.items",
+    "tr": "Items"
   },
   {
     "id": "products.currency",
@@ -776,6 +808,110 @@
     "tr": "The refund request is received successfully"
   },
   {
+    "id": "orders.my_orders",
+    "tr": "My Orders"
+  },
+  {
+    "id": "orders.track_manage",
+    "tr": "Track and Manage Orders"
+  },
+  {
+    "id": "orders.order_number",
+    "tr": "Order Number"
+  },
+  {
+    "id": "orders.status",
+    "tr": "Order Status"
+  },
+  {
+    "id": "orders.placed_on",
+    "tr": "Placed On"
+  },
+  {
+    "id": "orders.estimated_delivery",
+    "tr": "Est. Delivery"
+  },
+  {
+    "id": "orders.items",
+    "tr": "Items"
+  },
+  {
+    "id": "orders.total",
+    "tr": "Total"
+  },
+  {
+    "id": "orders.status.pending",
+    "tr": "Pending"
+  },
+  {
+    "id": "orders.status.processing",
+    "tr": "Processing"
+  },
+  {
+    "id": "orders.status.shipped",
+    "tr": "Shipped"
+  },
+  {
+    "id": "orders.status.delivered",
+    "tr": "Delivered"
+  },
+  {
+    "id": "orders.status.cancelled",
+    "tr": "Cancelled"
+  },
+  {
+    "id": "orders.step.order_placed",
+    "tr": "Order Placed"
+  },
+  {
+    "id": "orders.step.processing",
+    "tr": "Processing"
+  },
+  {
+    "id": "orders.step.shipped",
+    "tr": "Shipped"
+  },
+  {
+    "id": "orders.step.delivered",
+    "tr": "Delivered"
+  },
+  {
+    "id": "orders.quantity",
+    "tr": "Quantity"
+  },
+  {
+    "id": "orders.each",
+    "tr": "each"
+  },
+  {
+    "id": "orders.tracking",
+    "tr": "Tracking"
+  },
+  {
+    "id": "orders.view_details",
+    "tr": "View Details"
+  },
+  {
+    "id": "orders.leave_review",
+    "tr": "Leave a Review"
+  },
+  {
+    "id": "orders.track_order",
+    "tr": "Track Order"
+  },
+  {
+    "id": "actions.try_again",
+    "tr": "Try Again"
+  },
+  {
+    "id": "result.no_more_results",
+    "tr": "No more results"
+  },
+  {
+    "id": "orders.no_orders",
+    "tr": "You have no orders"
+  },
+  {
     "id": "inventory.reservation.not_found",
     "tr": "This requested reservation is not found"
   },
@@ -796,8 +932,16 @@
     "tr": "Inventory updated successfully"
   },
   {
+    "id": "categories.all_categories",
+    "tr": "All Categories"
+  },
+  {
     "id": "categories.missing_name.error",
     "tr": "you must provide the category name"
+  },
+  {
+    "id": "categories.subcategories",
+    "tr": "Subcategories"
   },
   {
     "id": "categories.not_found.error",
@@ -810,6 +954,10 @@
   {
     "id": "request.last_id.invalid",
     "tr": "the request last id is invalid"
+  },
+  {
+    "id": "request.pagination.invalid",
+    "tr": "The request listing pagination is missing or invalid!"
   },
   {
     "id": "username",
@@ -1168,8 +1316,48 @@
     "tr": "Cart"
   },
   {
+    "id": "cart.total",
+    "tr": "Total"
+  },
+  {
+    "id": "cart.subtotal",
+    "tr": "Subtotal"
+  },
+  {
+    "id": "cart.clear",
+    "tr": "Clear"
+  },
+  {
+    "id": "cart.empty",
+    "tr": "Your cart is empty"
+  },
+  {
+    "id": "cart.start_shopping",
+    "tr": "Start Shopping"
+  },
+  {
+    "id": "cart.checkout",
+    "tr": "Checkout"
+  },
+  {
     "id": "shipping.free_shipping",
     "tr": "Free shipping"
+  },
+  {
+    "id": "shipping.cost",
+    "tr": "Shipping Cost"
+  },
+  {
+    "id": "shipping.return_and_refund_policy",
+    "tr": "Returns & Refunds"
+  },
+  {
+    "id": "shipping.buy_now",
+    "tr": "Buy Now"
+  },
+  {
+    "id": "shipping.security_and_privacy",
+    "tr": "Security & Privacy"
   },
   {
     "id": "shipping.free_shipping_desc",
@@ -1192,16 +1380,16 @@
     "tr": "Free return"
   },
   {
+    "id": "shipping.refund_and_return_policy_desc",
+    "tr": "Eligible for returns and refunds, within the designated order protection period"
+  },
+  {
     "id": "shipping.free_return_on_millions_of_items",
     "tr": "Free returns on millions of items"
   },
   {
     "id": "shipping.free_return_desc",
     "tr": "Not satisfied with your order? Send it back within 90 days after the order was placed or 15 days after the order was received (depending on where it shipped from). The first return on each order is free (up to 5 times per month)."
-  },
-  {
-    "id": "categories.all_categories",
-    "tr": "All Categories"
   },
   {
     "id": "megacommerce.commitment",
@@ -1242,5 +1430,397 @@
   {
     "id": "upload.uploading_complete",
     "tr": "Uploading Completed"
+  },
+  {
+    "id": "products.sold_by",
+    "tr": "Sold by"
+  },
+  {
+    "id": "products.share",
+    "tr": "Share Product"
+  },
+  {
+    "id": "products.add_to_wishlist",
+    "tr": "Add To Wishlist"
+  },
+  {
+    "id": "products.security_and_privacy_desc",
+    "tr": "We protect your privacy and keep your personal details safe and secure. "
+  },
+  {
+    "id": "products.add_to_cart",
+    "tr": "Add to cart"
+  },
+  {
+    "id": "products.best_sellers",
+    "tr": "Best Sellers"
+  },
+  {
+    "id": "products.big_discount",
+    "tr": "Big Discount"
+  },
+  {
+    "id": "products.sold",
+    "tr": "sold"
+  },
+  {
+    "id": "products.hot_and_new",
+    "tr": "Hot And New"
+  },
+  {
+    "id": "products.more_to_like",
+    "tr": "More products to like"
+  },
+  {
+    "id": "products.today_deals",
+    "tr": "Today's deals"
+  },
+  {
+    "id": "time.just_now",
+    "tr": "just now"
+  },
+  {
+    "id": "time.one_minute_ago",
+    "tr": "one minute ago"
+  },
+  {
+    "id": "time.minutes_ago",
+    "tr": "{{Minutes}} minutes ago"
+  },
+  {
+    "id": "time.one_hour_ago",
+    "tr": "one hour ago"
+  },
+  {
+    "id": "time.hours_ago",
+    "tr": "{{Hours}} hours ago"
+  },
+  {
+    "id": "time.yesterday",
+    "tr": "yesterday"
+  },
+  {
+    "id": "time.days_ago",
+    "tr": "{{Days}} days ago"
+  },
+  {
+    "id": "time.one_week_ago",
+    "tr": "one week ago"
+  },
+  {
+    "id": "time.weeks_ago",
+    "tr": "{{Weeks}} weeks ago"
+  },
+  {
+    "id": "time.one_month_ago",
+    "tr": "one month ago"
+  },
+  {
+    "id": "time.months_ago",
+    "tr": "{{Months}} months ago"
+  },
+  {
+    "id": "result.no_more_results",
+    "tr": "No more results"
+  },
+  {
+    "id": "pages.go_back_to_home",
+    "tr": "Go back to home page"
+  },
+  {
+    "id": "pages.page_not_found",
+    "tr": "Oops! Page not found"
+  },
+  {
+    "id": "pages.page_not_found.message",
+    "tr": "We couldn't find the page you're looking for. It might have been moved or doesn't exist anymore."
+  },
+  {
+    "id": "privacy.protected",
+    "tr": "Your data is protected"
+  },
+  {
+    "id": "payment.tax.caculated_at_checkout",
+    "tr": "Tax calculated at checkout"
+  },
+  {
+    "id": "reviews.rating_and_reviews",
+    "tr": "Rating & Reviews"
+  },
+  {
+    "id": "reviews.reviews",
+    "tr": "Reviews"
+  },
+  {
+    "id": "reviews.ratings",
+    "tr": "Ratings"
+  },
+  {
+    "id": "reviews.stars",
+    "tr": "Stars"
+  },
+  {
+    "id": "reviews.rating",
+    "tr": "Rating"
+  },
+  {
+    "id": "reviews.with_pictures",
+    "tr": "With Pictures"
+  },
+  {
+    "id": "reviews.sort",
+    "tr": "Sort"
+  },
+  {
+    "id": "reviews.latest",
+    "tr": "Latest"
+  },
+  {
+    "id": "reviews.oldest",
+    "tr": "Oldest"
+  },
+  {
+    "id": "reviews.highest",
+    "tr": "Highest"
+  },
+  {
+    "id": "general.visit_store",
+    "tr": "Visit Store"
+  },
+  {
+    "id": "general.contact_seller",
+    "tr": "Contact Seller"
+  },
+  {
+    "id": "general.followers",
+    "tr": "Followers"
+  },
+  {
+    "id": "general.positive_feedback",
+    "tr": "Positive Feedback"
+  },
+  {
+    "id": "filter.created_at_desc",
+    "tr": "Newest"
+  },
+  {
+    "id": "filter.created_at_asc",
+    "tr": "Oldest"
+  },
+  {
+    "id": "filter.price_low_to_high",
+    "tr": "Price: Low to High"
+  },
+  {
+    "id": "filter.price_high_to_low",
+    "tr": "Price: High to Low"
+  },
+  {
+    "id": "filter.select_all",
+    "tr": "Select All"
+  },
+  {
+    "id": "filter.sort_by",
+    "tr": "Sort By"
+  },
+  {
+    "id": "personal_info",
+    "tr": "Personal Information"
+  },
+  {
+    "id": "image.max_size",
+    "tr": "Image maximum size is {{Max}} {{Unit}}"
+  },
+  {
+    "id": "image.max_size",
+    "tr": "Image maximum size is {{Max}} {{Unit}}"
+  },
+  {
+    "id": "dashboard.profile.title",
+    "tr": "My Profile"
+  },
+  {
+    "id": "dashboard.profile.full_name",
+    "tr": "Full Name"
+  },
+  {
+    "id": "dashboard.profile.email",
+    "tr": "Email"
+  },
+  {
+    "id": "dashboard.profile.username",
+    "tr": "Username"
+  },
+  {
+    "id": "dashboard.profile.member_since",
+    "tr": "Member Since"
+  },
+  {
+    "id": "dashboard.profile.email_verified",
+    "tr": "Email Verified"
+  },
+  {
+    "id": "dashboard.profile.not_verified",
+    "tr": "Not Verified"
+  },
+  {
+    "id": "dashboard.profile.verified",
+    "tr": "Verified"
+  },
+  {
+    "id": "sidebar.dashboard",
+    "tr": "Dashboard"
+  },
+  {
+    "id": "dashboard.profile.title",
+    "tr": "My Profile"
+  },
+  {
+    "id": "dashboard.profile.full_name",
+    "tr": "Full Name"
+  },
+  {
+    "id": "dashboard.profile.email",
+    "tr": "Email"
+  },
+  {
+    "id": "dashboard.profile.username",
+    "tr": "Username"
+  },
+  {
+    "id": "dashboard.profile.member_since",
+    "tr": "Member Since"
+  },
+  {
+    "id": "dashboard.profile.email_verified",
+    "tr": "Email Verified"
+  },
+  {
+    "id": "dashboard.profile.not_verified",
+    "tr": "Not Verified"
+  },
+  {
+    "id": "dashboard.profile.verified",
+    "tr": "Verified"
+  },
+  {
+    "id": "sidebar.orders",
+    "tr": "Orders"
+  },
+  {
+    "id": "sidebar.payments",
+    "tr": "Payments"
+  },
+  {
+    "id": "sidebar.logout",
+    "tr": "Logout"
+  },
+  {
+    "id": "sidebar.logout_confirmation_title",
+    "tr": "Confirm Logout"
+  },
+  {
+    "id": "sidebar.logout_confirmation_message",
+    "tr": "Are you sure you want to logout? You will need to login again to access your account."
+  },
+  {
+    "id": "payments.title",
+    "tr": "Payment Methods"
+  },
+  {
+    "id": "payments.subtitle",
+    "tr": "Manage your payment methods and view transaction history"
+  },
+  {
+    "id": "payments.saved_payment_methods",
+    "tr": "Saved Payment Methods"
+  },
+  {
+    "id": "payments.secure_payment",
+    "tr": "Secure Payment"
+  },
+  {
+    "id": "payments.add_new_payment_method",
+    "tr": "Add New Payment Method"
+  },
+  {
+    "id": "payments.credit_debit_card",
+    "tr": "Credit/Debit Card"
+  },
+  {
+    "id": "payments.paypal",
+    "tr": "PayPal"
+  },
+  {
+    "id": "payments.apple_pay",
+    "tr": "Apple Pay"
+  },
+  {
+    "id": "payments.google_pay",
+    "tr": "Google Pay"
+  },
+  {
+    "id": "payments.payment_security",
+    "tr": "Payment Security"
+  },
+  {
+    "id": "payments.ssl_encryption",
+    "tr": "SSL Encryption"
+  },
+  {
+    "id": "payments.ssl_encryption_desc",
+    "tr": "All your payment details are encrypted with 256-bit SSL security"
+  },
+  {
+    "id": "payments.pci_compliant",
+    "tr": "PCI Compliant"
+  },
+  {
+    "id": "payments.pci_compliant_desc",
+    "tr": "We are fully PCI DSS compliant to ensure your data safety"
+  },
+  {
+    "id": "payments.default",
+    "tr": "Default"
+  },
+  {
+    "id": "payments.expires",
+    "tr": "Expires"
+  },
+  {
+    "id": "payments.remove",
+    "tr": "Remove"
+  },
+  {
+    "id": "payments.add_new_card",
+    "tr": "Add New Card"
+  },
+  {
+    "id": "payments.card_number",
+    "tr": "Card Number"
+  },
+  {
+    "id": "payments.cardholder_name",
+    "tr": "Cardholder Name"
+  },
+  {
+    "id": "payments.expiry_date",
+    "tr": "Expiry Date (MM/YY)"
+  },
+  {
+    "id": "payments.cvc",
+    "tr": "CVC"
+  },
+  {
+    "id": "payments.card_details_encrypted",
+    "tr": "Your card details are encrypted and secure"
+  },
+  {
+    "id": "payments.cancel",
+    "tr": "Cancel"
+  },
+  {
+    "id": "payments.add_card",
+    "tr": "Add Card"
   }
 ]

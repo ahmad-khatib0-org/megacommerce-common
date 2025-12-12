@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS order_line_items (
   product_snapshot JSONB, -- full product snapshot for audit/debug
   status VARCHAR(32) NOT NULL, -- CREATED, CONFIRMED, SHIPPED, CANCELLED, REFUNDED, ...
   shipping_cents BIGINT NOT NULL, -- shipping in cents
+  estimated_delivery_date BIGINT NOT NULL, -- Unix timestamp in milliseconds
   created_at BIGINT NOT NULL, 
   updated_at BIGINT, 
   FOREIGN KEY(order_id) REFERENCES orders(id)

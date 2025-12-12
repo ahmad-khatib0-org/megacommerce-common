@@ -40,7 +40,7 @@ services:
   inventory_service_max_receive_message_size_bytes: 10485760 # 10mb
 oauth:
   oauth_provider_url: http://localhost:4444
-  oauth_client_id: "168742ea-4eae-4fdf-a374-1f68e8c8c4b6"
+  oauth_client_id: "6ba5affd-2ab4-4f83-acfe-d1f6c6237f24"
   oauth_client_secret: super-secret
   oauth_db_dsn: postgres://hydra:hydra-password@hydra-db:5432/hydra?sslmode=disable
   oauth_redirect_url: http://localhost:3000/api/callback

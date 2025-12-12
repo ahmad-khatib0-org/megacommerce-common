@@ -31,3 +31,5 @@ CREATE TABLE IF NOT EXISTS products (
   updated_at BIGINT,
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
+
+CREATE INDEX products_offer_gin_idx ON products USING gin (offer);
