@@ -22,22 +22,24 @@ main:
   feature_flag_sync_interval_seconds: 60
   allow_synced_drafts: true
 services:
-  common_service_grpc_url: 0.0.0.0:50051
-  user_service_grpc_url: 0.0.0.0:50052
-  products_service_grpc_url: 0.0.0.0:50053
   jaeger_collector_url: otel-collector:4317
-  common_service_prometheus_url: 0.0.0.0:8080
-  user_service_prometheus_url: 0.0.0.0:8081
-  products_service_prometheus_url: 0.0.0.0:8082
+  common_service_grpc_url: 0.0.0.0:50051
+  common_service_prometheus_url: 0.0.0.0:8060
+  user_service_grpc_url: 0.0.0.0:50052
+  user_service_prometheus_url: 0.0.0.0:8062
   users_service_max_receive_message_size_bytes: 52428800 # 50mb
+  products_service_grpc_url: 0.0.0.0:50053
+  products_service_prometheus_url: 0.0.0.0:8061
   auth_service_grpc_url: 0.0.0.0:50054
-  auth_service_prometheus_url: 0.0.0.0:8083
+  auth_service_prometheus_url: 0.0.0.0:8063
   orders_service_grpc_url: 0.0.0.0:50055
-  orders_service_prometheus_url: 0.0.0.0:8084
+  orders_service_prometheus_url: 0.0.0.0:8064
   orders_service_max_receive_message_size_bytes: 10485760 # 10mb
   inventory_service_grpc_url: 0.0.0.0:50056
-  inventory_service_prometheus_url: 0.0.0.0:8085
+  inventory_service_prometheus_url: 0.0.0.0:8065
   inventory_service_max_receive_message_size_bytes: 10485760 # 10mb
+  search_service_grpc_url: 0.0.0.0:50057
+  search_service_prometheus_url: 0.0.0.0:8066
 oauth:
   oauth_provider_url: http://localhost:4444
   oauth_client_id: "6ba5affd-2ab4-4f83-acfe-d1f6c6237f24"
@@ -265,7 +267,8 @@ native_app:
   mobile_prevent_screen_capture: false
   mobile_jailbreak_protection: true
 meilisearch:
-  server_urls: ["http://localhost:7700", "http://localhost:7701", "http://localhost:7702"]
+  server_urls:
+    ["http://localhost:7700", "http://localhost:7701", "http://localhost:7702"]
   master_key: "masterKey"
   enable_indexing: true
   enable_searching: true
@@ -308,7 +311,8 @@ image_proxy:
   remote_image_proxy_options: "resize=800x600"
 products:
   product_image_max_size_mb: 3
-  product_image_accepted_formats: ["image/png", "image/webp", "image/jpeg", "image/jpg"]
+  product_image_accepted_formats:
+    ["image/png", "image/webp", "image/jpeg", "image/jpg"]
   product_image_max_width: 2000
   product_image_max_height: 2000
   product_image_min_width: 400

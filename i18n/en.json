@@ -1822,5 +1822,329 @@
   {
     "id": "payments.add_card",
     "tr": "Add Card"
+  },
+  {
+    "id": "sidebar.supplier.dashboard",
+    "tr": "Dashboard"
+  },
+  {
+    "id": "sidebar.supplier.profile",
+    "tr": "Profile"
+  },
+  {
+    "id": "sidebar.supplier.inventory",
+    "tr": "Inventory"
+  },
+  {
+    "id": "sidebar.supplier.products",
+    "tr": "Products"
+  },
+  {
+    "id": "sidebar.supplier.logout",
+    "tr": "Logout"
+  },
+  {
+    "id": "sidebar.supplier.logout_confirmation_title",
+    "tr": "Confirm Logout"
+  },
+  {
+    "id": "sidebar.supplier.logout_confirmation_message",
+    "tr": "Are you sure you want to logout? You will need to login again to access your supplier dashboard."
+  },
+  {
+    "id": "products.supplier.list.title",
+    "tr": "My Products"
+  },
+  {
+    "id": "products.supplier.list.subtitle",
+    "tr": "Manage and organize your product catalog"
+  },
+  {
+    "id": "products.supplier.create",
+    "tr": "Create Product"
+  },
+  {
+    "id": "products.supplier.no_products",
+    "tr": "No products yet"
+  },
+  {
+    "id": "products.supplier.no_products_desc",
+    "tr": "Start creating your first product to begin selling"
+  },
+  {
+    "id": "products.supplier.edit",
+    "tr": "Edit"
+  },
+  {
+    "id": "products.supplier.delete",
+    "tr": "Delete"
+  },
+  {
+    "id": "products.supplier.status",
+    "tr": "Status"
+  },
+  {
+    "id": "products.supplier.created",
+    "tr": "Created"
+  },
+  {
+    "id": "products.supplier.price",
+    "tr": "Price"
+  },
+  {
+    "id": "products.supplier.quantity",
+    "tr": "Quantity"
+  },
+  {
+    "id": "products.supplier.loading",
+    "tr": "Loading products..."
+  },
+  {
+    "id": "products.supplier.error_loading",
+    "tr": "Failed to load products"
+  },
+  {
+    "id": "profile.supplier.title",
+    "tr": "Supplier Profile"
+  },
+  {
+    "id": "profile.supplier.full_name",
+    "tr": "Full Name"
+  },
+  {
+    "id": "profile.supplier.email",
+    "tr": "Email"
+  },
+  {
+    "id": "profile.supplier.username",
+    "tr": "Username"
+  },
+  {
+    "id": "profile.supplier.membership",
+    "tr": "Membership"
+  },
+  {
+    "id": "profile.supplier.created_at",
+    "tr": "Account Created"
+  },
+  {
+    "id": "profile.supplier.updated_at",
+    "tr": "Last Updated"
+  },
+  {
+    "id": "profile.supplier.email_verified",
+    "tr": "Verified"
+  },
+  {
+    "id": "profile.supplier.email_not_verified",
+    "tr": "Not Verified"
+  },
+  {
+    "id": "profile.supplier.loading",
+    "tr": "Loading profile..."
+  },
+  {
+    "id": "profile.supplier.error_loading",
+    "tr": "Failed to load profile"
+  },
+  {
+    "id": "dashboard.supplier.title",
+    "tr": "Dashboard"
+  },
+  {
+    "id": "dashboard.supplier.stats.total_products",
+    "tr": "Total Products"
+  },
+  {
+    "id": "dashboard.supplier.stats.total_inventory",
+    "tr": "Total Inventory Items"
+  },
+  {
+    "id": "dashboard.supplier.stats.total_reviews",
+    "tr": "Total Reviews"
+  },
+  {
+    "id": "dashboard.supplier.stats.pending_orders",
+    "tr": "Pending Orders"
+  },
+  {
+    "id": "dashboard.supplier.stats.total_orders",
+    "tr": "Total Orders"
+  },
+  {
+    "id": "dashboard.supplier.charts.visits_by_period",
+    "tr": "Visits by Period"
+  },
+  {
+    "id": "dashboard.supplier.charts.product_visits",
+    "tr": "Product Visit Trends"
+  },
+  {
+    "id": "dashboard.supplier.periods.today",
+    "tr": "Today"
+  },
+  {
+    "id": "dashboard.supplier.periods.yesterday",
+    "tr": "Yesterday"
+  },
+  {
+    "id": "dashboard.supplier.periods.last_week",
+    "tr": "Last Week"
+  },
+  {
+    "id": "dashboard.supplier.periods.last_month",
+    "tr": "Last Month"
+  },
+  {
+    "id": "dashboard.supplier.periods.last_year",
+    "tr": "Last Year"
+  },
+  {
+    "id": "dashboard.supplier.loading",
+    "tr": "Loading dashboard..."
+  },
+  {
+    "id": "dashboard.supplier.error_loading",
+    "tr": "Failed to load dashboard"
+  },
+  {
+    "id": "dashboard.supplier.coming_soon",
+    "tr": "Coming Soon"
+  },
+  {
+    "id": "inventory.supplier.list.title",
+    "tr": "Inventory Management"
+  },
+  {
+    "id": "inventory.supplier.list.subtitle",
+    "tr": "Manage your inventory, track stock levels, and monitor product status"
+  },
+  {
+    "id": "inventory.supplier.stats.total_items",
+    "tr": "Total Items"
+  },
+  {
+    "id": "inventory.supplier.stats.low_stock",
+    "tr": "Low Stock"
+  },
+  {
+    "id": "inventory.supplier.stats.out_of_stock",
+    "tr": "Out of Stock"
+  },
+  {
+    "id": "inventory.supplier.search",
+    "tr": "Search by SKU or product name..."
+  },
+  {
+    "id": "inventory.supplier.sku",
+    "tr": "SKU"
+  },
+  {
+    "id": "inventory.supplier.product",
+    "tr": "Product"
+  },
+  {
+    "id": "inventory.supplier.stock",
+    "tr": "Stock"
+  },
+  {
+    "id": "inventory.supplier.available",
+    "tr": "Available"
+  },
+  {
+    "id": "inventory.supplier.reserved",
+    "tr": "Reserved"
+  },
+  {
+    "id": "inventory.supplier.status",
+    "tr": "Status"
+  },
+  {
+    "id": "inventory.supplier.status.in_stock",
+    "tr": "In Stock"
+  },
+  {
+    "id": "inventory.supplier.status.low_stock",
+    "tr": "Low Stock"
+  },
+  {
+    "id": "inventory.supplier.status.out_of_stock",
+    "tr": "Out of Stock"
+  },
+  {
+    "id": "inventory.supplier.last_updated",
+    "tr": "Last Updated"
+  },
+  {
+    "id": "inventory.supplier.actions",
+    "tr": "Actions"
+  },
+  {
+    "id": "inventory.supplier.edit",
+    "tr": "Edit"
+  },
+  {
+    "id": "inventory.supplier.view",
+    "tr": "View"
+  },
+  {
+    "id": "inventory.supplier.delete",
+    "tr": "Delete"
+  },
+  {
+    "id": "inventory.supplier.clear_filters",
+    "tr": "Clear Filters"
+  },
+  {
+    "id": "inventory.supplier.no_inventory",
+    "tr": "No inventory items found"
+  },
+  {
+    "id": "inventory.supplier.no_inventory_desc",
+    "tr": "Try adjusting your search or filters"
+  },
+  {
+    "id": "inventory.supplier.loading",
+    "tr": "Loading inventory..."
+  },
+  {
+    "id": "inventory.supplier.error_loading",
+    "tr": "Failed to load inventory"
+  },
+  {
+    "id": "inventory.supplier.update.title",
+    "tr": "Update Inventory Item"
+  },
+  {
+    "id": "inventory.supplier.update.subtitle",
+    "tr": "Manage inventory levels and adjust stock quantities"
+  },
+  {
+    "id": "inventory.supplier.update.operation",
+    "tr": "Operation"
+  },
+  {
+    "id": "inventory.supplier.update.operation.set",
+    "tr": "Set to exact quantity"
+  },
+  {
+    "id": "inventory.supplier.update.operation.add",
+    "tr": "Add quantity"
+  },
+  {
+    "id": "inventory.supplier.update.operation.subtract",
+    "tr": "Subtract quantity"
+  },
+  {
+    "id": "inventory.supplier.update.quantity",
+    "tr": "Quantity"
+  },
+  {
+    "id": "inventory.supplier.update.reason",
+    "tr": "Reason for adjustment"
+  },
+  {
+    "id": "update",
+    "tr": "Update"
   }
 ]
