@@ -13,13 +13,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     postgresql-client \
     curl \
-    && rm -rf /var/lib/apt/lists/*
+    git && rm -rf /var/lib/apt/lists/*
 
 # Builder stage
 FROM base AS builder
 
 COPY requirements/base.txt requirements/dev.txt requirements/git.txt ./
-RUN pip install --user --no-warn-script-location -r base.txt -r dev.txt -r git.txt
+
+
+# First install Git-based dependencies with --no-deps
+RUN pip install --user --no-warn-script-location --no-deps -r git.txt
+
+# Then install other dependencies (which might include dependencies of the Git package)
+RUN pip install --user --no-warn-script-location -r base.txt -r dev.txt
 
 # Development stage
 FROM base AS dev
