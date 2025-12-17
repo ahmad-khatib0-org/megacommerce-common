@@ -14,10 +14,10 @@ class CommonServiceRouter(common_pb2_grpc.CommonServiceServicer):
     return types_pb2.PingResponse()
 
   def ConfigGet(self, request, context):
-    return self.config.get_config()
+    return self.config.get_config(request)
 
   def ConfigUpdate(self, request, context):
-    return self.config.update_config(request.comfig)
+    return self.config.update_config(request)
 
   def ConfigListener(self, request, context):
     return self.config.listen_config(request.client_id)

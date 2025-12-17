@@ -1,6 +1,6 @@
 ---
 main:
-  env: dev
+  env: local
   site_name: "MegaCommerce"
   site_url: "www.megacommerce.com"
   enable_link_previews: true

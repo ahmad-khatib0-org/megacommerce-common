@@ -1,6 +1,8 @@
 CREATE TABLE IF NOT EXISTS configurations(
   id VARCHAR(26) PRIMARY KEY,
+  env VARCHAR(50) NOT NULL DEFAULT 'dev',
   value BYTEA NOT NULL,
   created_at BIGINT NOT NULL,
-  active BOOLEAN DEFAULT NULL UNIQUE
+  active BOOLEAN DEFAULT NULL,
+  UNIQUE(env, active)
 )

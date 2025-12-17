@@ -1,0 +1,326 @@
+---
+main:
+  env: dev
+  site_name: "MegaCommerce"
+  site_url: "www.megacommerce.com"
+  enable_link_previews: true
+  restrict_link_previews: ""
+  enable_client_performance_debugging: false
+  enable_gif_picker: true
+  enable_custom_emoji: true
+  enable_emoji_picker: true
+  time_between_user_typing_updates_milliseconds: 500
+  enable_file_search: true
+  enable_user_typing_messages: true
+  enable_user_statuses: true
+  enable_email_invitations: true
+  enable_svgs: false
+  allow_persistent_notifications: false
+  persistent_notification_interval_minutes: 10
+  persistent_notification_max_count: 3
+  persistent_notification_max_recipients: 50
+  feature_flag_sync_interval_seconds: 60
+  allow_synced_drafts: true
+services:
+  jaeger_collector_url: otel-collector:4317
+  common_service_grpc_url: common-service:50051
+  common_service_prometheus_url: common-service:8060
+  user_service_grpc_url: user-service:50052
+  user_service_prometheus_url: user-service:8062
+  users_service_max_receive_message_size_bytes: 52428800 # 50mb
+  products_service_grpc_url: products-service:50053
+  products_service_prometheus_url: products-service:8061
+  auth_service_grpc_url: auth-service:50054
+  auth_service_prometheus_url: auth-service:8063
+  orders_service_grpc_url: orders-service:50055
+  orders_service_prometheus_url: orders-service:8064
+  orders_service_max_receive_message_size_bytes: 10485760 # 10mb
+  inventory_service_grpc_url: inventory-service:50056
+  inventory_service_prometheus_url: inventory-service:8065
+  inventory_service_max_receive_message_size_bytes: 10485760 # 10mb
+  search_service_grpc_url: search-service:50057
+  search_service_prometheus_url: search-service:8066
+oauth:
+  oauth_provider_url: http://hydra:4444
+  oauth_client_id: "6ba5affd-2ab4-4f83-acfe-d1f6c6237f24"
+  oauth_client_secret: super-secret
+  oauth_db_dsn: postgres://hydra:hydra-password@hydra-db:5432/hydra?sslmode=disable
+  oauth_redirect_url: http://localhost:3000/api/callback
+  oauth_login_url: http://user-service:4000/login
+  oauth_consent_url: http://user-service:4000/consent
+  oauth_response_type: code
+  oauth_scope: ["openid", "offline"]
+  oauth_admin_url: http://hydra:4445
+  oauth_backend_url: http://hydra:4000
+  frontend_login_url: http://localhost:3000/auth/login
+  frontend_login_error_url: http://localhost:3000/auth/login/error
+  oauth_grant_access_token_audience: ["megacommerce"]
+security:
+  access_token_expiry_web_in_hours: 240
+  access_token_expiry_mobile_in_hours: 2
+  access_token_expiry_sso_in_hours: 2
+  access_token_cache_in_minutes: 10
+  refresh_token_expiry_in_hours: 720 # one month
+  maximum_login_attempts: 5
+  terminate_sessions_on_password_change: true
+  email_confirmation_url: http://localhost:3000/auth/email-verification
+  password_reset_url: http://localhost:3000/auth/reset-password
+  token_confirmation_expiry_in_hours: 24
+  token_password_reset_expiry_in_hours: 24
+  enable_insecure_outgoing_connections: false
+  enable_multifactor_authentication: true
+  enforce_multifactor_authentication: false
+  enable_oauth_service_provider: true
+  enable_outgoing_oauth_connections: true
+  allow_cors_from: "*"
+  cors_exposed_headers: "X-Custom-Header"
+  cors_allow_credentials: true
+  cors_debug: false
+  allow_cookies_for_subdomains: false
+cache:
+  cache_type: "redis"
+  redis_address: "redis://redis:6379"
+  redis_password: ""
+  redis_db: 0
+  redis_cache_prefix: "cache:"
+  disable_client_cache: false
+metrics:
+  enable: true
+  block_profile_rate: 1
+  listen_address: ":9090"
+  enable_client_metrics: true
+  enable_notification_metrics: true
+  client_side_user_ids: []
+sso:
+  enable: true
+  secret: "sso-secret"
+  id: "sso-id"
+  scope: "openid email"
+  auth_endpoint: "https://auth.example.com"
+  token_endpoint: "https://token.example.com"
+  user_api_endpoint: "https://user.example.com"
+  discovery_endpoint: "https://discovery.example.com"
+  button_text: "Login with SSO"
+  button_color: "#000000"
+sql:
+  driver_name: postgres
+  data_source: postgresql://megacommerce@cockroachdb:26257/megacommerce?sslmode=disable
+  max_idle_conns: 2
+  max_open_conns: 10
+  conn_max_lifetime_milliseconds: 600000
+  conn_max_idle_time_milliseconds: 120000
+  trace: true
+  at_rest_encrypt_key: ""
+  query_timeout: 3000
+  disable_database_search: false
+password:
+  minimum_length: 8
+  maximum_length: 72
+  lowercase: true
+  number: true
+  uppercase: true
+  symbol: true
+  enable_forgot_link: true
+file:
+  enable_file_attachments: true
+  enable_mobile_upload: true
+  enable_mobile_download: true
+  max_image_resolution: 1920
+  max_image_decoder_concurrency: 4
+  driver_name: "s3"
+  amazon_s3_access_key_id: "minioadmin"
+  amazon_s3_secret_access_key: "minioadmin"
+  amazon_s3_bucket: "uploads"
+  amazon_s3_path_prefix: "files/"
+  amazon_s3_region: "us-east-1"
+  amazon_s3_endpoint: "http://minio:9000"
+  amazon_s3_ssl: false
+  amazon_s3_sign_v2: false
+  amazon_s3_sse: false
+  amazon_s3_trace: false
+  amazon_s3_request_timeout_milliseconds: 5000
+  amazon_s3_upload_part_size_bytes: 5242880
+  amazon_s3_storage_class: "STANDARD"
+email:
+  send_email_notifications: true
+  require_email_verification: true
+  feedback_email: "feedback@example.com"
+  reply_to_address: "noreply@example.com"
+  enable_smtp_auth: true
+  smtp_username: ""
+  smtp_password: ""
+  smtp_server: "mailhog"
+  smtp_port: "1025"
+  smtp_server_timeout: 30
+  connection_security: ""
+  send_push_notifications: true
+  push_notification_server: "https://push.example.com"
+  push_notification_contents: "full"
+  push_notification_buffer: 100
+  enable_email_batching: true
+  email_batching_buffer_size: 10
+  email_batching_interval: 5
+  skip_server_certificate_verification: false
+  email_notification_contents_type: "full"
+  login_button_color: "#000000"
+  login_button_border_color: "#ffffff"
+  login_button_text_color: "#ffffff"
+  rate_limiting_memory_size: 65536
+  rate_limiting_per_hour: 20
+  rate_limiting_max_burst: 20
+rate_limit:
+  enable: true
+  per_sec: 10
+  max_burst: 100
+  memory_store_size: 10000
+  vary_by_remote_addr: true
+  vary_by_user: true
+  vary_by_header: "X-Forwarded-For"
+privacy:
+  show_email_address: false
+  show_full_name: true
+support:
+  terms_of_service_link: "https://example.com/tos"
+  privacy_policy_link: "https://example.com/privacy"
+  about_link: "https://example.com/about"
+  help_link: "https://example.com/help"
+  report_a_problem_link: "https://example.com/report"
+  forgot_password_link: "https://example.com/forgot"
+  support_email: "support@example.com"
+localization:
+  default_server_locale: "en"
+  default_client_locale: "en"
+  available_locales: ["en"]
+ldap:
+  enable: true
+  enable_sync: true
+  ldap_server: "ldap.example.com"
+  ldap_port: 389
+  connection_security: "TLS"
+  base_dn: "dc=example,dc=com"
+  bind_username: "cn=admin,dc=example,dc=com"
+  bind_password: "password"
+  maximum_login_attempts: 5
+  user_filter: "(objectClass=person)"
+  group_filter: "(objectClass=group)"
+  enable_admin_filter: false
+  admin_filter: "(memberOf=cn=admins,dc=example,dc=com)"
+  group_display_name_attribute: "cn"
+  group_id_attribute: "gid"
+  first_name_attribute: "givenName"
+  last_name_attribute: "sn"
+  email_attribute: "mail"
+  username_attribute: "uid"
+  nickname_attribute: "displayName"
+  id_attribute: "uidNumber"
+  position_attribute: "title"
+  login_id_attribute: "uid"
+  picture_attribute: "jpegPhoto"
+  sync_interval_minutes: 60
+  query_timeout: 30
+  max_page_size: 500
+  login_field_name: "Email"
+  login_button_color: "#0000FF"
+  login_button_border_color: "#000000"
+  login_button_text_color: "#FFFFFF"
+saml:
+  enable: true
+  enable_sync_with_ldap: false
+  enable_sync_with_ldap_include_auth: false
+  ignore_guests_ldap_sync: true
+  verify: true
+  encrypt: true
+  sign_request: true
+  idp_url: "https://idp.example.com"
+  idp_descriptor_url: "https://idp.example.com/descriptor"
+  idp_metadata_url: "https://idp.example.com/metadata"
+  service_provider_identifier: "sp-id"
+  assertion_consumer_service_url: "https://sp.example.com/assertion"
+  signature_algorithm: "RSA-SHA256"
+  canonical_algorithm: "http://www.w3.org/2001/10/xml-exc-c14n#"
+  scoping_idp_provider_id: "scoping-idp-id"
+  scoping_idp_name: "Example IdP"
+  idp_certificate_file: "/path/to/idp.crt"
+  public_certificate_file: "/path/to/public.crt"
+  private_key_file: "/path/to/private.key"
+  id_attribute: "uid"
+  enable_admin_attribute: true
+  admin_attribute: "isAdmin"
+  first_name_attribute: "givenName"
+  last_name_attribute: "sn"
+  email_attribute: "mail"
+  username_attribute: "uid"
+  nickname_attribute: "displayName"
+  locale_attribute: "locale"
+  position_attribute: "title"
+  login_button_text: "Login with SAML"
+  login_button_color: "#0000FF"
+  login_button_border_color: "#000000"
+  login_button_text_color: "#FFFFFF"
+native_app:
+  app_custom_url_schemes: ["myapp://"]
+  app_download_link: "https://example.com/download"
+  android_app_download_link: "https://play.google.com/store/apps/details?id=com.example"
+  ios_app_download_link: "https://apps.apple.com/app/id123456789"
+  mobile_external_browser: true
+  mobile_enable_biometrics: true
+  mobile_prevent_screen_capture: false
+  mobile_jailbreak_protection: true
+meilisearch:
+  server_urls:
+    [
+      "http://meilisearch:7700",
+      "http://meilisearch:7701",
+      "http://meilisearch:7702",
+    ]
+  master_key: "masterKey"
+  enable_indexing: true
+  enable_searching: true
+  enable_autocomplete: true
+  enable_typo_tolerance: true
+  max_concurrency: 100
+  request_timeout_seconds: 30
+  index_prefix: ""
+  search_cutoff_ms: 1000
+  kafka_broker: "redpanda:9092"
+  kafka_group_id: "meili-worker-group"
+  kafak_topic: products_outbox
+  kafak_topic_dlq: products_dlq
+  task_max_wait_ms: 30000
+  task_max_retries: 5
+  task_backoff_base_ms: 200
+  shutdown_wait_secs: 30
+bleve:
+  index_dir: "/var/bleve"
+  enable_indexing: true
+  enable_searching: true
+  enable_autocomplete: true
+  bulk_indexing_time_window_seconds: 5
+  batch_size: 100
+data_retention:
+  enable_message_deletion: true
+  enable_file_deletion: true
+  enable_boards_deletion: false
+  message_retention_hours: 720
+  file_retention_hours: 720
+  boards_retention_days: 30
+  deletion_job_start_time: "02:00"
+  batch_size: 100
+  time_between_batches_milliseconds: 500
+  retention_ids_batch_size: 100
+image_proxy:
+  enable: true
+  image_proxy_type: "remote"
+  remote_image_proxy_url: "https://imageproxy.example.com"
+  remote_image_proxy_options: "resize=800x600"
+products:
+  product_image_max_size_mb: 3
+  product_image_accepted_formats:
+    ["image/png", "image/webp", "image/jpeg", "image/jpg"]
+  product_image_max_width: 2000
+  product_image_max_height: 2000
+  product_image_min_width: 400
+  product_image_min_height: 400
+  product_images_min_count_per_variant: 1
+  product_images_max_count_per_variant: 10
+  product_media_max_direct_uploading_size_mb: 40

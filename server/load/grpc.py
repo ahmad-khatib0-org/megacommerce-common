@@ -1,6 +1,6 @@
 from concurrent import futures
 
-from common.v1 import common_pb2_grpc, common_pb2
+from common.v1 import common_pb2, common_pb2_grpc
 import grpc
 from grpc_reflection.v1alpha import reflection
 

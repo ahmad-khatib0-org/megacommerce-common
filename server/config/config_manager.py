@@ -1,6 +1,6 @@
 from queue import Queue
 import threading
-from typing import Optional
+from typing import Optional, Dict
 
 from common.v1 import common_pb2_grpc, config_pb2
 from grpc import StatusCode
@@ -19,7 +19,7 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
     self._lock = threading.Lock()
     self._db = DatabasePool()
     self._service_config: Config = service_config
-    self._current_config: Optional[config_pb2.Config] = None
+    self._current_config: Dict[str, Optional[config_pb2.Config]] = {}
     self._listeners = {}
     self._shutdown_event = threading.Event()
     self._helpers = ConfigHelpers()
@@ -31,10 +31,12 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
       conn = self._db.get_conn()
       with self._lock:
         with conn.cursor() as cur:
-          cur.execute("SELECT value FROM configurations WHERE active = TRUE")
-          row = cur.fetchone()
-          if row:
-            self._current_config = self._helpers.load_config_from_yaml_bytes(row[0])
+          cur.execute("SELECT env, value FROM configurations WHERE active = TRUE")
+          rows = cur.fetchall()
+          if rows:
+            for row in rows:
+              env = row[0]
+              self._current_config[env] = self._helpers.load_config_from_yaml_bytes(row[1])
             return
           else:
             with open("config_all.yaml", "rb") as f:
@@ -42,13 +44,14 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
               config_msg = self._helpers.load_config_from_yaml_bytes(config_bin)
 
               id = str(ULID())
+              env = self._service_config.service.env
               cur.execute(
                   """
-                 INSERT INTO configurations (id, value, created_at, active)
-                 VALUES(%s, %s, %s, TRUE)
-                """, (id, Binary(config_bin), TimeUtils.time_in_milies()))
+                 INSERT INTO configurations (id, env, value, created_at, active)
+                 VALUES(%s, %s, %s, %s, TRUE)
+                """, (id, env, Binary(config_bin), TimeUtils.time_in_milies()))
               conn.commit()
-              self._current_config = config_msg
+              self._current_config[env] = config_msg
             # store config
     except DatabaseError as e:
       raise RuntimeError(
@@ -60,13 +63,13 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
           ), )
 
   def _cleanup_config_in_dev_mode(self):
-    if self._service_config.service.env != "dev":
+    if self._service_config.service.env not in ["dev", "local"]:
       return
     conn = self._db.get_conn()
     try:
       with self._lock:
         with conn.cursor() as cur:
-          cur.execute("DELETE FROM configurations")
+          cur.execute("DELETE FROM configurations WHERE env = %s", (self._service_config.service.env,))
           conn.commit()
     except DatabaseError as e:
       conn.rollback()
@@ -74,17 +77,21 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
           AppError(
               where="common.config._cleanup_config_in_dev_mode",
               id="failed_to_load_config",
-              detailed_error=f"failed to cleanup configurations in dev mode {str(e)}",
+              detailed_error=f"failed to cleanup configurations in dev/local mode {str(e)}",
               status_code=StatusCode.INTERNAL.value[0],
           ))
 
-  def get_config(self):
-    if self._current_config is not None:
-      return config_pb2.ConfigGetResponse(data=self._current_config)
+  def get_config(self, request):
+    env = request.env if request.env else 1  # default to DEV
+    env_str = self._env_int_to_str(env)
+    
+    if env_str in self._current_config and self._current_config[env_str] is not None:
+      return config_pb2.ConfigGetResponse(data=self._current_config[env_str])
+    
     conn = self._db.get_conn()
     try:
       with conn.cursor() as cur:
-        cur.execute('SELECT value FROM configurations WHERE active = TRUE')
+        cur.execute('SELECT value FROM configurations WHERE env = %s AND active = TRUE', (env_str,))
         row = cur.fetchone()
         if not row:
           sc = StatusCode.NOT_FOUND.value[0]
@@ -92,7 +99,7 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
           return config_pb2.ConfigGetResponse(error=error.to_proto())
         data = self._helpers.load_config_from_yaml_bytes(row[0])
         with self._lock:
-          self._current_config = data
+          self._current_config[env_str] = data
         return config_pb2.ConfigGetResponse(data=data)
     except Exception as e:
       sc = StatusCode.INTERNAL.value[0]
@@ -106,21 +113,28 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
     finally:
       self._db.release_conn(conn)
 
-  def update_config(self, config):
+  def _env_int_to_str(self, env_int: int) -> str:
+    env_map = {0: "local", 1: "dev", 2: "production"}
+    return env_map.get(env_int, "dev")
+
+  # TODO: validate the incoming request
+  def update_config(self, request):
+    env_str = self._env_int_to_str(request.config_env if hasattr(request, 'config_env') else 1)
+    config = request.config if hasattr(request, 'config') else request
+    
     conn = self._db.get_conn()
     try:
       with self._lock:
         with conn.cursor() as cur:
-          cur.execute("UPDATE configurations SET active = NULL WHERE active = TRUE")
+          cur.execute("UPDATE configurations SET active = NULL WHERE env = %s AND active = TRUE", (env_str,))
 
-          # TODO: validate the incoming request
           id = str(ULID())
           cur.execute(
               """
-              INSERT INTO configurations (id, value, created_at, active)
-              VALUES(%s, %s, %s, TRUE)
+              INSERT INTO configurations (id, env, value, created_at, active)
+              VALUES(%s, %s, %s, %s, TRUE)
               """,
-              (id, Binary(config.value), TimeUtils.time_in_milies()),
+              (id, env_str, Binary(config.value), TimeUtils.time_in_milies()),
           )
           conn.commit()
 
