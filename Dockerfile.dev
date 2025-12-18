@@ -28,7 +28,7 @@ COPY --from=builder /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
 
 COPY main.py ./
-COPY .env config*.yaml ./
+RUN if [ -f .env ]; then cp .env .; else echo "No .env file, continuing..."; fi
 COPY utils/ ./utils/
 COPY types_lib/ ./types_lib/
 COPY server/ ./server/
