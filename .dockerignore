@@ -15,7 +15,6 @@ build/
 *.log
 Dockerfile*
 .dockerignore
-requirements/
 tests/
 README.md
 *.sqlite3
