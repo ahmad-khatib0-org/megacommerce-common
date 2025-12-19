@@ -21,6 +21,15 @@ main:
   persistent_notification_max_recipients: 50
   feature_flag_sync_interval_seconds: 60
   allow_synced_drafts: true
+observability:
+  enable_tracing: true
+  enable_metrics: true
+  enable_profiling: true
+  tracing_sample_rate: 0.1  # 10% sampling
+  jaeger_endpoint: http://otel-collector:4317
+  prometheus_pushgateway: http://prometheus:9090
+  otel_grpc_endpoint: otel-collector:4317
+
 services:
   jaeger_collector_url: otel-collector:4317
   common_service_grpc_url: common-service:50051

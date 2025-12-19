@@ -1,3 +1,4 @@
+import os
 from common.v1 import config_pb2
 from google.protobuf.json_format import ParseDict
 import yaml
@@ -6,7 +7,11 @@ from models.app import Config
 
 
 def load_all_config():
-  with open("config_all.yaml", "r") as f:
+  env = os.getenv("ENV", "local")
+  if env != "local" and env != "dev" and env != "production":
+    env = "local"
+
+  with open(f"config.{env}.yaml", "r") as f:
     data = yaml.safe_load(f)
   config_proto = config_pb2.Config()
 

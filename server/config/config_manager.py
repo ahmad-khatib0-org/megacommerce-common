@@ -1,5 +1,6 @@
 from queue import Queue
 import threading
+import time
 from typing import Optional, Dict
 
 from common.v1 import common_pb2_grpc, config_pb2
@@ -23,9 +24,21 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
     self._listeners = {}
     self._shutdown_event = threading.Event()
     self._helpers = ConfigHelpers()
+    self._metrics = None
+    self._init_metrics()
     self._init_config()
 
+  def _init_metrics(self):
+    """Initialize metrics collector from global instance."""
+    try:
+      from server.load.grpc import get_metrics_collector
+      self._metrics = get_metrics_collector()
+    except (ImportError, AttributeError):
+      self._metrics = None
+
   def _init_config(self):
+    """Initialize configuration from database or file."""
+    start_time = time.time()
     self._cleanup_config_in_dev_mode()
     try:
       conn = self._db.get_conn()
@@ -37,6 +50,9 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
             for row in rows:
               env = row[0]
               self._current_config[env] = self._helpers.load_config_from_yaml_bytes(row[1])
+            if self._metrics:
+              self._metrics.record_config_load()
+              self._metrics.observe_config_load_duration(time.time() - start_time)
             return
           else:
             with open("config_all.yaml", "rb") as f:
@@ -47,13 +63,18 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
               env = self._service_config.service.env
               cur.execute(
                   """
-                 INSERT INTO configurations (id, env, value, created_at, active)
-                 VALUES(%s, %s, %s, %s, TRUE)
-                """, (id, env, Binary(config_bin), TimeUtils.time_in_milies()))
+                  INSERT INTO configurations (id, env, value, created_at, active)
+                  VALUES(%s, %s, %s, %s, TRUE)
+                 """, (id, env, Binary(config_bin), TimeUtils.time_in_milies()))
               conn.commit()
               self._current_config[env] = config_msg
+              if self._metrics:
+                self._metrics.record_config_load()
+                self._metrics.observe_config_load_duration(time.time() - start_time)
             # store config
     except DatabaseError as e:
+      if self._metrics:
+        self._metrics.record_config_load_error()
       raise RuntimeError(
           AppError(
               where="common.config._init_config",
@@ -82,10 +103,15 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
           ))
 
   def get_config(self, request):
+    """Get configuration by environment."""
+    start_time = time.time()
     env = request.env if request.env else 1  # default to DEV
     env_str = self._env_int_to_str(env)
     
     if env_str in self._current_config and self._current_config[env_str] is not None:
+      if self._metrics:
+        self._metrics.record_config_load()
+        self._metrics.observe_config_load_duration(time.time() - start_time)
       return config_pb2.ConfigGetResponse(data=self._current_config[env_str])
     
     conn = self._db.get_conn()
@@ -94,14 +120,21 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
         cur.execute('SELECT value FROM configurations WHERE env = %s AND active = TRUE', (env_str,))
         row = cur.fetchone()
         if not row:
+          if self._metrics:
+            self._metrics.record_config_load_error()
           sc = StatusCode.NOT_FOUND.value[0]
           error = AppError("common.config.get_config", "common.config.not_found", status_code=sc)
           return config_pb2.ConfigGetResponse(error=error.to_proto())
         data = self._helpers.load_config_from_yaml_bytes(row[0])
         with self._lock:
           self._current_config[env_str] = data
+        if self._metrics:
+          self._metrics.record_config_load()
+          self._metrics.observe_config_load_duration(time.time() - start_time)
         return config_pb2.ConfigGetResponse(data=data)
     except Exception as e:
+      if self._metrics:
+        self._metrics.record_config_load_error()
       sc = StatusCode.INTERNAL.value[0]
       error = AppError(
           "common.config.get_config",
@@ -119,6 +152,8 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
 
   # TODO: validate the incoming request
   def update_config(self, request):
+    """Update configuration for an environment."""
+    start_time = time.time()
     env_str = self._env_int_to_str(request.config_env if hasattr(request, 'config_env') else 1)
     config = request.config if hasattr(request, 'config') else request
     
@@ -142,9 +177,14 @@ class ConfigManager(common_pb2_grpc.CommonServiceServicer):
             for q in self._listeners.values():
               q.put(config)
 
+          if self._metrics:
+            self._metrics.record_config_update()
+            self._metrics.observe_config_update_duration(time.time() - start_time)
           return config_pb2.ConfigUpdateResponse(data=config)
     except Exception as e:
       conn.rollback()
+      if self._metrics:
+        self._metrics.record_config_update_error()
       sc = StatusCode.INTERNAL.value[0]
       error = AppError(
           "common.config.update_config",
