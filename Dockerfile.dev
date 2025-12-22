@@ -27,6 +27,7 @@ RUN apk add --no-cache \
 COPY --from=builder /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
 
+COPY config*.yaml ./
 COPY main.py ./
 RUN if [ -f .env ]; then cp .env .; else echo "No .env file, continuing..."; fi
 COPY utils/ ./utils/

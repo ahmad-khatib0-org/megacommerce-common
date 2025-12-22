@@ -40,6 +40,14 @@ services:
   inventory_service_max_receive_message_size_bytes: 10485760 # 10mb
   search_service_grpc_url: 0.0.0.0:50057
   search_service_prometheus_url: 0.0.0.0:8066
+observability:
+  enable_tracing: true
+  enable_metrics: true
+  enable_profiling: true
+  tracing_sample_rate: 0.1 # 10% sampling
+  jaeger_endpoint: http://0.0.0.0:4317
+  prometheus_pushgateway: http://0.0.0.0:9090
+  otel_grpc_endpoint: 0.0.0.0:4317
 oauth:
   oauth_provider_url: http://localhost:4444
   oauth_client_id: "6ba5affd-2ab4-4f83-acfe-d1f6c6237f24"
